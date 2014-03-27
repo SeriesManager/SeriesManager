@@ -12,18 +12,13 @@ import javax.swing.JFrame;
  *
  * @author Arles Mathieu
  */
-public class SeriesManager {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        JFrame f = new Fenetre();
-        
-        
-        f.setVisible(true);
-        
+public class Fenetre extends JFrame{
+    
+    
+    public Fenetre() {
+        setTitle("Gestionnaire de séries");
+        setSize(300,300);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
 }
