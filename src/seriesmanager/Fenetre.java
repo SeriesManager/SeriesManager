@@ -6,19 +6,33 @@
 
 package seriesmanager;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
- *
+ * 
  * @author Arles Mathieu
  */
 public class Fenetre extends JFrame{
     
+    private JPanel principal; //container principal
+    private JPanel menu; // panel à placer sur la gauche
+    private JPanel page; // panel pour les différentes pages
     
     public Fenetre() {
         setTitle("Gestionnaire de séries");
-        setSize(300,300);
+        setSize(930,530);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null); //place la fenêtre au centre de l'écran
+        
+        principal = new JPanel();
+        this.setContentPane(principal);
+        
+        
+        menu = new JPanel();
+        
+        
+        
+        page = new Accueil();
     }
     
 }
