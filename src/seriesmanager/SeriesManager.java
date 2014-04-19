@@ -14,16 +14,15 @@ import javax.swing.JFrame;
  */
 public class SeriesManager {
 
+    public static final int MAIN_PANEL_WIDTH = 720;
+    public static final int MAIN_PANEL_HEIGHT = 530;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         JFrame f = new Fenetre();
-        
-        
         f.setVisible(true);
-        
-    }
-    
+    }   
 }
