@@ -23,6 +23,7 @@ public class Vignette extends JPanel{
     
     private String imagePath;
     private JLabel nomSerie;
+    protected JPanel south;
     
     public Vignette(String imagePath, String nom){
         this.imagePath = imagePath;
@@ -31,16 +32,19 @@ public class Vignette extends JPanel{
         this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
         this.setLayout(new BorderLayout());
         
+        south = new JPanel();
+        south.setLayout(new BorderLayout());
+        south.setOpaque(false);
+        
         nomSerie = new JLabel(nom);
         nomSerie.setOpaque(false);
         nomSerie.setHorizontalAlignment(SwingConstants.CENTER);
         
         //à retirer quand on aura les images
         setBackground(Color.red);
+        south.add(nomSerie);
         
-        
-        this.add(nomSerie, BorderLayout.SOUTH);
-        this.validate();
+        this.add(south, BorderLayout.SOUTH);
         
     }
     
