@@ -17,8 +17,8 @@ import javax.swing.border.EmptyBorder;
  */
 public class Vignette extends JPanel{
     
-    private static final int PANEL_WIDTH = 125;
-    private static final int PANEL_HEIGHT = 185;
+    public static final int PANEL_WIDTH = 125;
+    public static final int PANEL_HEIGHT = 185;
     
     public Vignette(){
         this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
