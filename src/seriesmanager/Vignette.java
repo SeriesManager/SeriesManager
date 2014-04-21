@@ -48,13 +48,13 @@ public class Vignette extends JPanel{
         
     }
     
-    //POUR LES TESTS
-   public Vignette(int numero){
-        this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
-        this.setBackground(Color.gray);
-        this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
-        this.add(new JLabel("Vignette " + numero));
-    }
+//    //POUR LES TESTS
+//   public Vignette(int numero){
+//        this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
+//        this.setBackground(Color.gray);
+//        this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
+//        this.add(new JLabel("Vignette " + numero));
+//    }
    
   /* à rajouter quand on aura des images
    @Override

@@ -14,18 +14,17 @@ import javax.swing.JScrollPane;
  *
  * @author Django
  */
-public class MesSeries extends JPanel{
+public class PanelSerieScroll extends JPanel{
     
     private JScrollPane vertical;
     private final static int NB_VIGNETTE_LIGNE = 5;
         
-    public MesSeries(){
+    public PanelSerieScroll(){
         this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
         this.setBackground(Color.green);
         this.setLayout(new BorderLayout());
         JPanel container = new JPanel();
         
-<<<<<<< HEAD
         // ON RECUPERE LE NOMBRE DEVIGNETTE A AFFICHR EN BASE DE DONNEE
         int nbVignette = 20;
         // ON DIVISE LE NOMBRE PAR 5 (nombre par lignes)
@@ -36,13 +35,7 @@ public class MesSeries extends JPanel{
         container.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH - 25, height_scroll + 30) );
         // ON AJOUTE LES VIGNETTES
         for(int i = 0; i<nbVignette; ++i){
-            container.add(new Vignette(i+1));
-=======
-        this.setLayout(new GridLayout(3,5));
-        
-        for(int i = 0; i<10; ++i){
-            this.add(new VignetteButton(null,"Test" + i,true));
->>>>>>> c7dbc6f0262ed47d20de16fa0b25b9431bb2dff5
+            container.add(new VignetteButton(null, ("Vignette " + (i+1)), true)); //container.add(new Vignette(i+1));
         }
        
         // ON AJOUTE NOTRE PANEL A SCROLL PANEL

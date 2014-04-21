@@ -52,7 +52,7 @@ public class Fenetre extends JFrame{
         
         // ainsi que nos différentes pages qui apparaîtront 
         accueil = new Accueil();
-        mesSeries = new MesSeries();
+        mesSeries = new PanelSerieScroll();
         
         // et l'autre panel de droite qui va accueillir le reste des pages
         page = accueil;

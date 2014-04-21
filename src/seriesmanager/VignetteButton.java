@@ -28,10 +28,8 @@ public class VignetteButton extends Vignette {
             bouton = new JButton("+");
         else
             bouton = new JButton("-");
-        
-        
-        super.south.add(bouton,BorderLayout.EAST);
-        
+
+        super.south.add(bouton,BorderLayout.EAST);  
     }
     
     

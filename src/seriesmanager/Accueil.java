@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 public class Accueil extends JPanel{
     
     
+    private final static int NB_VIGNETTE_LIGNE = 5;
     
     public Accueil(){
         this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
@@ -27,8 +28,8 @@ public class Accueil extends JPanel{
         
         this.setLayout(new GridLayout(2,1));
         
-        PanelVignette serieSemaine = new  PanelVignette("Série de la semaine", 1, 6);
-        PanelVignette episodesVus = new PanelVignette("Episodes vus", 1,6);
+        PanelVignette serieSemaine = new  PanelVignette("Série de la semaine", 1, NB_VIGNETTE_LIGNE);
+        PanelVignette episodesVus = new PanelVignette("Episodes vus", 1,NB_VIGNETTE_LIGNE);
         
         while(!serieSemaine.isFull())
             serieSemaine.addVignette(new Vignette(null, "Test"));
