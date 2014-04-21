@@ -23,7 +23,7 @@ public class MesSeries extends JPanel{
         this.setLayout(new GridLayout(3,5));
         
         for(int i = 0; i<10; ++i){
-            this.add(new Vignette(i+1));
+            this.add(new Vignette(null,"Test" + i));
         }
     }
 }
