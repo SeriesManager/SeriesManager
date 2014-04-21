@@ -25,6 +25,7 @@ public class MesSeries extends JPanel{
         this.setLayout(new BorderLayout());
         JPanel container = new JPanel();
         
+<<<<<<< HEAD
         // ON RECUPERE LE NOMBRE DEVIGNETTE A AFFICHR EN BASE DE DONNEE
         int nbVignette = 20;
         // ON DIVISE LE NOMBRE PAR 5 (nombre par lignes)
@@ -36,6 +37,12 @@ public class MesSeries extends JPanel{
         // ON AJOUTE LES VIGNETTES
         for(int i = 0; i<nbVignette; ++i){
             container.add(new Vignette(i+1));
+=======
+        this.setLayout(new GridLayout(3,5));
+        
+        for(int i = 0; i<10; ++i){
+            this.add(new VignetteButton(null,"Test" + i,true));
+>>>>>>> c7dbc6f0262ed47d20de16fa0b25b9431bb2dff5
         }
        
         // ON AJOUTE NOTRE PANEL A SCROLL PANEL
