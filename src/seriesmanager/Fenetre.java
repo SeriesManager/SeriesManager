@@ -102,11 +102,10 @@ public class Fenetre extends JFrame{
         
         this.setVisible(true);
     }
-       public void paint(Graphics g)
+ /*      public void paint(Graphics g)
    {
-      /* Affiche les différentes images */
-      //g.drawImage (imgFond, 0, 0, this);
-   }
+           g.drawImage (imgFond, 0, 0, this);
+   }*/
        
     public JPanel getPage(){
         return page;
