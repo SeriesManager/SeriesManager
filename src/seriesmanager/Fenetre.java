@@ -9,8 +9,12 @@ package seriesmanager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -32,6 +36,9 @@ public class Fenetre extends JFrame{
     private JPanel accueil;
     private JPanel mesSeries;
    
+    //Image de fond
+    public Image imgFond;
+
     // taille de notre fenetre
     private static final int WINDOWS_WIDTH = 930;
     private static final int WINDOWS_HEIGHT = 530;
@@ -42,6 +49,14 @@ public class Fenetre extends JFrame{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null); //place la fenêtre au centre de l'écran
         this.setResizable(false);
+        
+        /*
+        try {
+         imgFond = ImageIO.read(getClass().getResourceAsStream("img/fond.png"));
+         }
+         catch(IOException e) { }
+        
+        this.repaint();*/
         
         principal = new JPanel();
         this.setContentPane(principal);
@@ -87,7 +102,12 @@ public class Fenetre extends JFrame{
         
         this.setVisible(true);
     }
-    
+       public void paint(Graphics g)
+   {
+      /* Affiche les différentes images */
+      //g.drawImage (imgFond, 0, 0, this);
+   }
+       
     public JPanel getPage(){
         return page;
     }
