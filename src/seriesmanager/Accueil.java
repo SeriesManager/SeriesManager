@@ -6,9 +6,6 @@
 
 package seriesmanager;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 
@@ -22,19 +19,10 @@ public class Accueil extends JPanel{
     private final static int NB_VIGNETTE_LIGNE = 5;
     
     public Accueil(){
-        this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
-        this.setBackground(Color.orange);
-        this.setLayout(new BorderLayout());
-        
-        
-        JPanel recherche = new PanelRecherche();
-        this.add(recherche,BorderLayout.NORTH);
-        
-        JPanel centre = new JPanel();
-        
+        //this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
+                     
                 
-                
-        centre.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(2,1));
         
         PanelVignette serieSemaine = new  PanelVignette("Série de la semaine", 1, NB_VIGNETTE_LIGNE);
         PanelVignette episodesVus = new PanelVignette("Episodes vus", 1,NB_VIGNETTE_LIGNE);
@@ -45,10 +33,9 @@ public class Accueil extends JPanel{
         while(!episodesVus.isFull())
             episodesVus.addVignette(new Vignette(null, "Test"));
         
-        centre.add(serieSemaine);
-        centre.add(episodesVus);
+        this.add(serieSemaine);
+        this.add(episodesVus);
         
         
-        this.add(centre,BorderLayout.CENTER);
     }
 }

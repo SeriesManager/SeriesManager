@@ -7,14 +7,9 @@
 package seriesmanager;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -24,18 +19,23 @@ import javax.swing.*;
 public class Fenetre extends JFrame{
     
     //container principal
-    private JPanel principal;
+    private final JPanel principal;
     
     // notre menu qui se trouve à gauche
     private Menu menu;
     
+    //Panel contenant la page et le champ de recherche
+    private final JPanel centre;
+    
     // page de droite qui va changer
     private JPanel page;
+    
+    private final JPanel recherche;
     
     // les pages de droites qui vont apparaitre et disparaitre dans l'appli
     private JPanel accueil;
     private JPanel mesSeries;
-   
+    
     //Image de fond
     public Image imgFond;
 
@@ -68,15 +68,18 @@ public class Fenetre extends JFrame{
         // ainsi que nos différentes pages qui apparaîtront 
         accueil = new Accueil();
         mesSeries = new PanelSerieScroll();
-        
+        recherche = new PanelRecherche();
         // et l'autre panel de droite qui va accueillir le reste des pages
-        page = accueil;
-        
-
+        page = new JPanel();
+        page.add(accueil);
+        centre = new JPanel();
+        centre.setLayout(new BorderLayout());
+        centre.add(recherche,BorderLayout.NORTH);
+        centre.add(page,BorderLayout.CENTER);
         
         // le placement des panels
         principal.add(menu, BorderLayout.WEST);
-        principal.add(page, BorderLayout.CENTER);
+        principal.add(centre, BorderLayout.CENTER);
         
         /////////// POUR LES TESTS (DJANGO) /////////////
         // au clic sur le bouton mes series
@@ -85,16 +88,18 @@ public class Fenetre extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e)
             {
-             
                 // TEST BOITE DE DIALOGUE
 //                JOptionPane jop1;
 //                jop1 = new JOptionPane();
 //                jop1.showMessageDialog(null, "Message informatif", "Information", JOptionPane.INFORMATION_MESSAGE);
-
-                page = mesSeries;
-                principal.add(page, BorderLayout.CENTER);
+                page.removeAll();
+                page.add(mesSeries);
+               // centre.remove(page);
+                //centre.add(page, BorderLayout.CENTER);
+                //page.revalidate();
+                //page.repaint();
                 page.revalidate();
-                page.repaint();
+                 
             }
         });
         ///////////////////////////////////////////////////////
