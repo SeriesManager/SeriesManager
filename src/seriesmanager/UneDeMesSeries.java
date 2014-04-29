@@ -19,6 +19,9 @@ public class UneDeMesSeries extends JPanel{
     JPanel pnlBaseGauche = new JPanel();   
     JPanel pnlBaseDroite = new JPanel();
 
+    //pnlBaseGauche.setPreferredSize(new Dimension(300,500));
+    //pnlBaseDroite.setPreferredSize(new Dimension(300,500));
+            
     //Premier Layout
     this.setLayout(new GridBagLayout());
     GridBagConstraints gbc1 = new GridBagConstraints();

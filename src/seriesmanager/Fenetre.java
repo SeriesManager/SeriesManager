@@ -35,7 +35,7 @@ public class Fenetre extends JFrame{
     // les pages de droites qui vont apparaitre et disparaitre dans l'appli
     private JPanel accueil;
     private JPanel mesSeries;
-    
+    private JPanel uneDeMesSerie;
     //Image de fond
     public Image imgFond;
 
@@ -69,6 +69,7 @@ public class Fenetre extends JFrame{
         accueil = new Accueil();
         mesSeries = new PanelSerieScroll();
         recherche = new PanelRecherche();
+        uneDeMesSerie = new UneDeMesSeries();
         // et l'autre panel de droite qui va accueillir le reste des pages
         page = new JPanel();
         page.add(accueil);
@@ -80,6 +81,7 @@ public class Fenetre extends JFrame{
         // le placement des panels
         principal.add(menu, BorderLayout.WEST);
         principal.add(centre, BorderLayout.CENTER);
+        
         
         /////////// POUR LES TESTS (DJANGO) /////////////
         // au clic sur le bouton mes series
@@ -102,6 +104,18 @@ public class Fenetre extends JFrame{
                  
             }
         });
+        
+        menu.getWajdi().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                page.removeAll();
+                page.add(uneDeMesSerie);
+                page.revalidate();
+            }
+        }) ;
+        
+    
         ///////////////////////////////////////////////////////
         
         

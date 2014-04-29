@@ -25,6 +25,7 @@ public class Menu extends JPanel{
     private JButton series;
     private JButton calendrier;
     private JButton profil;
+    private JButton wajdi;
     
     public Menu(){
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
@@ -37,16 +38,24 @@ public class Menu extends JPanel{
         series = new JButton("Series");
         calendrier = new JButton("Calendrier");
         profil = new JButton("Profil");
+        wajdi = new JButton("Pour le mec des anées 80");
         
         this.add(accueil);
         this.add(mesSeries);
         this.add(series);
         this.add(calendrier);
         this.add(profil);
-        
+        this.add(wajdi);
     }
     
     public JButton getMesSeries(){
         return mesSeries;
     }
+
+    public JButton getWajdi() {
+        return wajdi;
+    }
+    
+    
+    
 }

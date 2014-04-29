@@ -32,7 +32,7 @@ public class PanelSerieScroll extends JPanel{
         // ON MULTIPLIE LE NOMBRE DELIGNE AR LA HAUTEUR D'UNE VIGNETTE
         int height_scroll = Math.round(nbLigne * Vignette.PANEL_HEIGHT);
         // ON ADAPTE LA TAILLE DU CONTAINER
-        container.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH - 25, height_scroll + 30) );
+        container.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH - 25, height_scroll + 90) );
         // ON AJOUTE LES VIGNETTES
         for(int i = 0; i<nbVignette; ++i){
             container.add(new VignetteButton(null, ("Vignette " + (i+1)), true)); //container.add(new Vignette(i+1));
@@ -40,7 +40,7 @@ public class PanelSerieScroll extends JPanel{
        
         // ON AJOUTE NOTRE PANEL A SCROLL PANEL
         vertical = new JScrollPane();
-        vertical.setPreferredSize(new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT ));
+        vertical.setPreferredSize(new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT));
         vertical.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         vertical.setViewportView(container);   
         this.add(vertical, BorderLayout.CENTER);
