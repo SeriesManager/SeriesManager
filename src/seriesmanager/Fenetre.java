@@ -7,6 +7,8 @@
 package seriesmanager;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +33,7 @@ public class Fenetre extends JFrame{
     private JPanel page;
     
     private final JPanel recherche;
+    private JPanel nordOuest;
     
     // les pages de droites qui vont apparaitre et disparaitre dans l'appli
     private JPanel accueil;
@@ -61,21 +64,31 @@ public class Fenetre extends JFrame{
         principal = new JPanel();
         this.setContentPane(principal);
         principal.setLayout(new BorderLayout());
+        
    
         // on instancie le menu
         menu = new Menu();
         
+        
+        nordOuest = new JPanel();
+        JPanel nord = new JPanel(); // Panel contenant 2 autre panel (ouest et recherche)
+        nord.setLayout(new GridLayout(1,2));
+
+        
         // ainsi que nos différentes pages qui apparaîtront 
         accueil = new Accueil();
-        mesSeries = new PanelSerieScroll();
+        mesSeries = new PanelSerieScroll(nordOuest);
         recherche = new PanelRecherche();
         uneDeMesSerie = new UneDeMesSeries();
         // et l'autre panel de droite qui va accueillir le reste des pages
+        
+        nord.add(nordOuest);
+        nord.add(recherche);
         page = new JPanel();
         page.add(accueil);
         centre = new JPanel();
         centre.setLayout(new BorderLayout());
-        centre.add(recherche,BorderLayout.NORTH);
+        centre.add(nord,BorderLayout.NORTH);
         centre.add(page,BorderLayout.CENTER);
         
         // le placement des panels

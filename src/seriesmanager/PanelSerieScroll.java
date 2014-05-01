@@ -17,13 +17,16 @@ import javax.swing.JScrollPane;
 public class PanelSerieScroll extends JPanel{
     
     private JScrollPane vertical;
+    private JPanel filtreBouton;
     private final static int NB_VIGNETTE_LIGNE = 5;
         
-    public PanelSerieScroll(){
+    public PanelSerieScroll(JPanel filtreBouton){
         this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
         this.setBackground(Color.green);
         this.setLayout(new BorderLayout());
         JPanel container = new JPanel();
+        this.filtreBouton = filtreBouton;
+        this.filtreBouton.setBackground(Color.CYAN);
         
         // ON RECUPERE LE NOMBRE DEVIGNETTE A AFFICHR EN BASE DE DONNEE
         int nbVignette = 20;
