@@ -56,6 +56,13 @@ public class Menu extends JPanel{
         return wajdi;
     }
     
+    public JButton getAccueil(){
+        return accueil;
+    }
+    
+    public JButton getProfil(){
+        return profil;
+    }
     
     
 }
