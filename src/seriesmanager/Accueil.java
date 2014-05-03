@@ -21,8 +21,11 @@ public class Accueil extends JPanel{
     public Accueil(){
         //this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
                      
-                
-        this.setLayout(new GridLayout(2,1));
+        GridLayout gl = new GridLayout(2,1);
+        gl.setVgap(30);
+        this.setLayout(gl);
+        
+        
         
         PanelVignette serieSemaine = new  PanelVignette("Série de la semaine", 1, NB_VIGNETTE_LIGNE);
         PanelVignette episodesVus = new PanelVignette("Episodes vus", 1,NB_VIGNETTE_LIGNE);
