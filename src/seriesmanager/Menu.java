@@ -14,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
-//import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -26,14 +25,7 @@ public class Menu extends JPanel{
     
     private static final int PANEL_WIDTH = 210;
     private static final int PANEL_HEIGHT = 530;
-    
-    /*private JButton accueil;
-    private JButton mesSeries;
-    private JButton series;
-    private JButton calendrier;
-    private JButton profil;
-    private JButton wajdi;*/
- 
+
    /**
     * Titre de la fenetre du menu principal.
     */
@@ -93,9 +85,7 @@ public class Menu extends JPanel{
         
         this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        
-      //this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-      //this.setSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+
       this.setBackground(Color.WHITE);
       this.setLayout(null);
 
@@ -107,38 +97,9 @@ public class Menu extends JPanel{
 
       /* Charge Menu principal */
       showMenu();
-      /*  accueil = new JButton("Accueil");
-        mesSeries = new JButton("Mes séries");
-        series = new JButton("Series");
-        calendrier = new JButton("Calendrier");
-        profil = new JButton("Profil");
-        wajdi = new JButton("Pour le mec des anées 80");
-        
-        this.add(accueil);
-        this.add(mesSeries);
-        this.add(series);
-        this.add(calendrier);
-        this.add(profil);
-        this.add(wajdi);*/
     }
     
-   /* public JButton getMesSeries(){
-        return mesSeries;
-    }
-
-    public JButton getWajdi() {
-        return wajdi;
-    }
-    
-    public JButton getAccueil(){
-        return accueil;
-    }
-    
-    public JButton getProfil(){
-        return profil;
-    }*/
-    
-       /**
+    /**
     * Initialise les zones cliquable pour le Menu principal.
     */
    public void initRectMenu()
@@ -198,19 +159,6 @@ public class Menu extends JPanel{
    public void charger_imgMenu()
    {
       try {
-         //fond = ImageIO.read(getClass().getResourceAsStream("img/test.png"));
-       /*  imgAccueil = ImageIO.read(getClass().getResourceAsStream("img/imgAccueil"));
-         imgAllSeries = ImageIO.read(getClass().getResourceAsStream("img/imgAllSeries"));
-         imgMySeries = ImageIO.read(getClass().getResourceAsStream("img/imgMySeries"));
-         imgCalendrier = ImageIO.read(getClass().getResourceAsStream("img/imgCalendrier"));
-         imgProfil = ImageIO.read(getClass().getResourceAsStream("img/imgProfil.png"));
-         
-         imgAccueilEffet = ImageIO.read(getClass().getResourceAsStream("img/imgAccueilEffet"));
-         imgAllSeriesEffet = ImageIO.read(getClass().getResourceAsStream("img/imgAllSeriesEffet"));
-         imgMySeriesEffet = ImageIO.read(getClass().getResourceAsStream("img/imgMySeriesEffet"));
-         imgCalendrierEffet = ImageIO.read(getClass().getResourceAsStream("img/imgCalendrierEffet"));
-         imgProfilEffet = ImageIO.read(getClass().getResourceAsStream("img/imgProfilEffet"));
-         */
          imgAccueil = ImageIO.read(getClass().getResourceAsStream("img/imgAccueil"));
          imgAllSeries = ImageIO.read(getClass().getResourceAsStream("img/imgAllSeries"));
          imgMySeries = ImageIO.read(getClass().getResourceAsStream("img/imgMySeries"));
