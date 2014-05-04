@@ -24,22 +24,22 @@ public class Fenetre extends JFrame{
     private final JPanel principal;
     
     // notre menu qui se trouve à gauche
-    private Menu menu;
+    public Menu menu;
     
     //Panel contenant la page et le champ de recherche
     private final JPanel centre;
     
     // page de droite qui va changer
-    private JPanel page;
+    public JPanel page;
     
     private final JPanel recherche;
-    private JPanel nordOuest;
+    public JPanel nordOuest;
     
     // les pages de droites qui vont apparaitre et disparaitre dans l'appli
-    private JPanel accueil;
-    private JPanel mesSeries;
-    private JPanel uneDeMesSerie;
-    private JPanel profil;
+    public JPanel accueil;
+    public JPanel mesSeries;
+    public JPanel uneDeMesSerie;
+    public JPanel profil;
     
     //Image de fond
     public Image imgFond;
@@ -69,7 +69,7 @@ public class Fenetre extends JFrame{
         
    
         // on instancie le menu
-        menu = new Menu();
+        menu = new Menu(this);
         
         
         nordOuest = new JPanel();
@@ -102,7 +102,7 @@ public class Fenetre extends JFrame{
         
         /////////// POUR LES TESTS (DJANGO) /////////////
         // au clic sur le bouton mes series
-        menu.getMesSeries().addActionListener(new ActionListener()
+    /*    menu.getMesSeries().addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -126,9 +126,9 @@ public class Fenetre extends JFrame{
                 page.revalidate();
                  
             }
-        });
+        });*/
         
-        menu.getWajdi().addActionListener(new ActionListener() {
+     /*   menu.getWajdi().addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -165,7 +165,7 @@ public class Fenetre extends JFrame{
                 page.repaint();
                 page.revalidate(); 
             }
-        });
+        })*/
     
         ///////////////////////////////////////////////////////
         
@@ -185,7 +185,7 @@ public class Fenetre extends JFrame{
         this.page = page;
     }
     
-    private void clearNordOuest(){
+    public void clearNordOuest(){
         nordOuest.removeAll();
         nordOuest.repaint();
         nordOuest.revalidate();
