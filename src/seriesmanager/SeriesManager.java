@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 public class SeriesManager {
 
     public static final int MAIN_PANEL_WIDTH = 720;
-    public static final int MAIN_PANEL_HEIGHT = 530;
+    public static final int MAIN_PANEL_HEIGHT = 470; // 530;
     
     /**
      * @param args the command line arguments

@@ -32,8 +32,8 @@ public  class PanelVignette extends JPanel{
         numLimit = ligne * colonne;
         numEffectif = 0;
         GridLayout gl = new GridLayout(ligne,colonne);
-        gl.setHgap(5);
-        gl.setVgap(5);
+        gl.setHgap(10);
+        gl.setVgap(10);
         
         setLayout(new BorderLayout());
         add(new JLabel(name),BorderLayout.NORTH);
