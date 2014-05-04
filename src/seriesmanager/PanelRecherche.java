@@ -20,14 +20,14 @@ import javax.swing.JTextField;
 public class PanelRecherche extends JPanel{
     
     
-    public static final int WIDTH = 10;
+    public static final int WIDTH_SEARCH = 10;
     private JTextField recherche;
 
     
     
     public PanelRecherche() {
         super();
-        recherche = new JTextField(WIDTH);
+        recherche = new JTextField(WIDTH_SEARCH);
         JButton btn = new JButton("ok");
         JPanel east = new JPanel();
         
