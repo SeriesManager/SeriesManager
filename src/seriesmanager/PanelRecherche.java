@@ -30,10 +30,7 @@ public class PanelRecherche extends JPanel{
     public PanelRecherche() {
         super();
         recherche = new JTextField(WIDTH_SEARCH);
-<<<<<<< HEAD
-=======
         recherche.setPreferredSize(new Dimension(140, 30));
->>>>>>> e03e271f307bd026280ecd93bfe5b9a6d192390b
         JButton btn = new JButton("ok");
         btn.setPreferredSize(new Dimension(60, 30));
         JPanel east = new JPanel();
