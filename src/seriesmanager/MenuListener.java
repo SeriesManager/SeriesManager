@@ -37,7 +37,7 @@ class MenuListener implements MouseListener, MouseMotionListener
     * Methode appelé lors d'un click de la souris. Si le clic est sur l'un
     * des choux du menu : execute l'action associé.
     * @param ev
-    *       Evenemende la souris t lié au click.
+    *       Evenemende la souris t lié au clic.
     */
    public void mouseClicked (MouseEvent ev)
    {
@@ -85,7 +85,6 @@ class MenuListener implements MouseListener, MouseMotionListener
           
           System.out.println("ActionCalendrier");
       }
-      //Action panel de droit de l'appli .repaint() pour peindre le choix sur l'appli
    }
 
    /**
