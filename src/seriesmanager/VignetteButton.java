@@ -7,6 +7,7 @@
 package seriesmanager;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JButton;
 
 /**
@@ -28,6 +29,8 @@ public class VignetteButton extends Vignette {
             bouton = new JButton("+");
         else
             bouton = new JButton("-");
+        
+        bouton.setPreferredSize(new Dimension(20,20));
 
         super.south.add(bouton,BorderLayout.EAST);  
     }

@@ -31,10 +31,10 @@ public class Accueil extends JPanel{
         PanelVignette episodesVus = new PanelVignette("Episodes vus", 1,NB_VIGNETTE_LIGNE);
         
         while(!serieSemaine.isFull())
-            serieSemaine.addVignette(new Vignette(null, "Test"));
+            serieSemaine.addVignette(new VignetteButton(null, "Test",true));
         
         while(!episodesVus.isFull())
-            episodesVus.addVignette(new Vignette(null, "Test"));
+            episodesVus.addVignette(new VignetteButton(null, "Test",true));
         
         this.add(serieSemaine);
         this.add(episodesVus);
