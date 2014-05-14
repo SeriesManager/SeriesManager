@@ -7,6 +7,9 @@ package seriesmanager;
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -16,7 +19,7 @@ import javax.swing.border.BevelBorder;
  *
  * @author Django
  */
-public class Vignette extends JPanel{
+public class Vignette extends JPanel implements MouseListener{
     
     public static final int PANEL_WIDTH = 125;
     public static final int PANEL_HEIGHT = 185;
@@ -46,6 +49,8 @@ public class Vignette extends JPanel{
         
         this.add(south, BorderLayout.SOUTH);
         
+        this.addMouseListener(this);
+        
     }
     
 //    //POUR LES TESTS
@@ -67,4 +72,37 @@ public class Vignette extends JPanel{
         }
    }
    */
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        Vignette v =(Vignette) e.getSource();
+        Fenetre fen = (Fenetre)v.getTopLevelAncestor();
+        
+        JPanel p = fen.getPage();
+        
+        p.removeAll();
+        p.add(new UneDeMesSeries());
+        p.revalidate();
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        this.mouseClicked(e);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        ;
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        ;
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        ;
+    }
 }
