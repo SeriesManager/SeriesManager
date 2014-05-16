@@ -6,10 +6,43 @@
 
 package database;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import objets.Episode;
+
 /**
  *
  * @author Arles Mathieu
  */
 public class EpisodeManager {
+    
+    public static List<Episode> getEpisodeBySaison(int sid) throws SQLException {
+        List<Episode> episodes = new ArrayList<>();
+        
+        Connexion conn = new Connexion("serie_database.db");
+        
+        conn.connect();
+        
+        ResultSet res = conn.query("SELECT * FROM EPISODE WHERE saison_id = " + sid);
+        
+        
+        while(res.next()) {
+            Episode e = new Episode();
+            
+            e.setDate_sortie(res.getDate("episode_date_sortie"));
+            e.setDuree(res.getFloat("episode_duree"));
+            e.setId(res.getInt("episode_id"));
+            e.setName(res.getString("episode_name"));
+            e.setSaison_id(sid);
+            e.setSynopsis(res.getString("episode_synopsis"));
+            
+           
+           episodes.add(e);
+        }
+        
+        return episodes;
+    }
     
 }
