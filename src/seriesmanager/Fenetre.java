@@ -6,6 +6,7 @@
 
 package seriesmanager;
 
+import database.SerieManager;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -51,7 +52,6 @@ public class Fenetre extends JFrame{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null); //place la fenêtre au centre de l'écran
         this.setResizable(false);
-        
         /*
         try {
          imgFond = ImageIO.read(getClass().getResourceAsStream("img/fond.png"));
