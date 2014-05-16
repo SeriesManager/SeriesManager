@@ -63,17 +63,14 @@ public class Fenetre extends JFrame{
         principal = new JPanel();
         this.setContentPane(principal);
         principal.setLayout(new BorderLayout());
-        
    
         // on instancie le menu
         menu = new Menu(this);
-        
-        
+
         nordOuest = new JPanel();
         JPanel nord = new JPanel(); // Panel contenant 2 autre panel (ouest et recherche)
         nord.setLayout(new GridLayout(1,2));
 
-        
         // ainsi que nos différentes pages qui apparaîtront 
         accueil = new Accueil();
         mesSeries = new PanelSerieScroll(nordOuest);
@@ -165,8 +162,7 @@ public class Fenetre extends JFrame{
         })*/
     
         ///////////////////////////////////////////////////////
-        
-        
+
         this.setVisible(true);
     }
  /*      public void paint(Graphics g)

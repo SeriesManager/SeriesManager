@@ -8,6 +8,7 @@ package seriesmanager;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import javax.swing.JButton;
 
 /**
@@ -17,12 +18,12 @@ import javax.swing.JButton;
 public class VignetteButton extends Vignette {
 
     private boolean signe; // true = +, false = -
-    
+    private String imgPath;
 
     public VignetteButton(String imagePath, String nom, boolean signe) {
         super(imagePath, nom);
         this.signe = signe;
-        
+        this.imgPath = imagePath;
         JButton bouton;
         
         if(signe)
@@ -34,7 +35,4 @@ public class VignetteButton extends Vignette {
 
         super.south.add(bouton,BorderLayout.EAST);  
     }
-    
-    
-    
 }

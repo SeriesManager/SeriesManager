@@ -17,6 +17,7 @@ public class Saison {
     private int id;
     private Date date_sortie;
     private String synopsis;
+    private String name;
     private int id_serie;
 
     public int getId() {
@@ -52,7 +53,13 @@ public class Saison {
     }
     
     
-    
+     public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     
 }

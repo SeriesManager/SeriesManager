@@ -6,6 +6,8 @@
 
 package objets;
 
+import java.util.Date;
+
 /**
  *
  * @author Arles Mathieu
@@ -21,7 +23,25 @@ public class Serie {
     private String Statut;
     private boolean vue;
     private String commentaire;
+    private float note;
+    private Date annee;
+    private String img;
 
+    @Override
+    public String toString(){
+        return "id : " + this.id + "\n"
+                + "name : " + this.name + "\n"
+                + "realisateur : " + this.realisateur + "\n"
+                + "acteurs : " + this.acteurs + "\n"
+                + "pays : " + this.pays + "\n"
+                + "genre : " + this.genre + "\n"
+                + "Statut : " + this.Statut + "\n"
+                + "vue : " + this.vue + "\n"
+                + "commentaire : " + this.commentaire + "\n"
+                + "note : " + this.note + "\n"
+                + "annee : " + this.annee + "\n"
+                + "img : " + this.img + "\n";        
+    }
     public int getId() {
         return id;
     }
@@ -93,9 +113,29 @@ public class Serie {
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
-    
-    
-    
-    
-    
+
+    public float getNote() {
+        return note;
+    }
+
+    public void setNote(float note) {
+        this.note = note;
+    }
+
+    public Date getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(Date annee) {
+        this.annee = annee;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
 }
