@@ -118,9 +118,9 @@ public class Menu extends JPanel{
    {
       zoneCalendrier = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
       zoneAccueil   = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
-      zoneAllSeries    = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
-      zoneMySeries      = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
-      zoneProfil     = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
+      zoneAllSeries   = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
+      zoneMySeries  = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
+      zoneProfil  = new Rectangle((int) 0, (int) 0, (int) 0, (int) 0);
    }
 
    /**
