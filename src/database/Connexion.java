@@ -58,6 +58,14 @@ public class Connexion {
            System.out.println("Erreur dans la requet : " + requet);
        }
        return resultat;
-
+   }
+    
+   public void update(String requet) {
+       try {
+           statement.executeUpdate(requet);
+       } catch (SQLException e) {
+           e.printStackTrace();
+           System.out.println("Erreur dans la requet : " + requet);
+       }
    }
 }

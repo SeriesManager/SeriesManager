@@ -61,16 +61,26 @@ class MenuListener implements MouseListener, MouseMotionListener
           m.f.page.removeAll();
           m.f.nordOuest.setLayout(new BorderLayout());
           m.f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
+          m.f.nordOuest.add(((PanelSerieScroll)m.f.lesSeries).getComboBoxTri(), BorderLayout.WEST);
+          m.f.page.add(m.f.lesSeries);
+          m.f.nordOuest.repaint(); 
+          m.f.nordOuest.revalidate();
+          m.f.page.repaint();
+          m.f.page.revalidate();
+      }
+      else if (m.zoneMySeries.contains(p)) { /* Affiche l'objet page mes series */
+           
+          System.out.println("ActionMesSeries");
+          
+          m.f.page.removeAll();
+          m.f.nordOuest.setLayout(new BorderLayout());
+          m.f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
           m.f.nordOuest.add(((PanelSerieScroll)m.f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
           m.f.page.add(m.f.mesSeries);
           m.f.nordOuest.repaint(); 
           m.f.nordOuest.revalidate();
           m.f.page.repaint();
           m.f.page.revalidate();
-      }
-      else if (m.zoneMySeries.contains(p)) { /* Affiche l'objet page toutes les series */
-           
-          System.out.println("ActionMesSeries");
       }
       else if (m.zoneProfil.contains(p)) {/* fiche la page profil */
           

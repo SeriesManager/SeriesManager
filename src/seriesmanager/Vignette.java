@@ -23,8 +23,8 @@ public class Vignette extends JPanel implements MouseListener{
     public static final int PANEL_WIDTH = 125;
     public static final int PANEL_HEIGHT = 185;
     
-    private String imagePath;
-    private JLabel nomSerie;
+    protected String imagePath;
+    protected JLabel nomSerie;
     protected JPanel south;
     
     public Vignette(String imagePath, String nom){
@@ -40,10 +40,12 @@ public class Vignette extends JPanel implements MouseListener{
         
         nomSerie = new JLabel(nom);
         nomSerie.setOpaque(false);
+        nomSerie.setForeground(Color.white);
+        nomSerie.setFont(new Font("Sans Serif", Font.BOLD, 13));
         nomSerie.setHorizontalAlignment(SwingConstants.CENTER);
         
         //à retirer quand on aura les images
-        setBackground(Color.red);
+        //setBackground(Color.red);
         south.add(nomSerie);
         
         this.add(south, BorderLayout.SOUTH);

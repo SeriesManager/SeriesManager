@@ -8,6 +8,7 @@ package seriesmanager;
 
 import database.SerieManager;
 import java.awt.GridLayout;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import objets.Serie;
@@ -20,7 +21,7 @@ public class Accueil extends JPanel{
 
     private final static int NB_VIGNETTE_LIGNE = 5;
     
-    public Accueil(){
+    public Accueil() throws IOException{
         //this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT) );
         
         // ON RECUPERE LES SERIES

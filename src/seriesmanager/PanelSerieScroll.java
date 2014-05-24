@@ -7,10 +7,13 @@ package seriesmanager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import objets.Serie;
 
 /**
  *
@@ -22,12 +25,17 @@ public class PanelSerieScroll extends JPanel{
     private JPanel filtreBouton;
     private JComboBox combo;
 
+    private List<Serie> series;
+    
     private final static int NB_VIGNETTE_LIGNE = 5;
     private final static int SIZE_ESPACE_H = 25;
     private final static int SIZE_ESPACE_W = 3;
     private final static int SCROLL_SPEED = 20;
         
-    public PanelSerieScroll(JPanel filtreBouton){
+    public PanelSerieScroll(JPanel filtreBouton, List<Serie> series) throws IOException{
+        this.series = series;
+                for(Serie s : series)
+            System.out.println("\n"+s+"\n");
         this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT - 15));
         this.setBackground(Color.green);
         this.setLayout(new BorderLayout());
@@ -47,7 +55,7 @@ public class PanelSerieScroll extends JPanel{
         
         
         // ON RECUPERE LE NOMBRE DEVIGNETTE A AFFICHR EN BASE DE DONNEE
-        int nbVignette = 29;
+        int nbVignette = series.size();
         // ON DIVISE LE NOMBRE PAR 5 (nombre par lignes)
         int  nbLigne = (int) Math.ceil(nbVignette / (float) NB_VIGNETTE_LIGNE); // cast float important  
         // ON MULTIPLIE LE NOMBRE DELIGNE AR LA HAUTEUR D'UNE VIGNETTE
@@ -65,7 +73,9 @@ public class PanelSerieScroll extends JPanel{
             JPanel espaceW = new JPanel();
             espaceW.setPreferredSize(new Dimension(SIZE_ESPACE_W,0));
             container.add(espaceW);
-            container.add(new VignetteButton(null, ("Vignette " + (i+1)), true)); //container.add(new Vignette(i+1));
+            boolean vu = series.get(i).isVue();
+            String serieName = series.get(i).getName().length() > 15 ? series.get(i).getName().substring(0, 14)+"..." : series.get(i).getName();
+            container.add(new VignetteButton(series.get(i).getImg(), serieName, vu)); //container.add(new Vignette(i+1));
         }
        
         // ON AJOUTE NOTRE PANEL A SCROLL PANEL

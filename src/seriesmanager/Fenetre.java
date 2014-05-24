@@ -10,7 +10,10 @@ import database.SerieManager;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.io.IOException;
+import java.util.List;
 import javax.swing.*;
+import objets.Serie;
 
 /**
  * 
@@ -36,6 +39,7 @@ public class Fenetre extends JFrame{
     // les pages de droites qui vont apparaitre et disparaitre dans l'appli
     public JPanel accueil;
     public JPanel mesSeries;
+    public JPanel lesSeries;
     public JPanel uneDeMesSerie;
     public JPanel profil;
     
@@ -46,7 +50,7 @@ public class Fenetre extends JFrame{
     private static final int WINDOWS_WIDTH = 930;
     private static final int WINDOWS_HEIGHT = 530;
     
-    public Fenetre() {
+    public Fenetre() throws IOException {
         setTitle("Gestionnaire de séries");
         setSize(WINDOWS_WIDTH,WINDOWS_HEIGHT);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -73,7 +77,15 @@ public class Fenetre extends JFrame{
 
         // ainsi que nos différentes pages qui apparaîtront 
         accueil = new Accueil();
-        mesSeries = new PanelSerieScroll(nordOuest);
+        
+        // on récupère toutes les series pour la page dédiée
+        List<Serie> les_series = SerieManager.getAllSerie();
+        lesSeries = new PanelSerieScroll(nordOuest, les_series);
+        
+        // on récupère toutes les series de l'utilisateur
+        List<Serie> mes_series = SerieManager.getAllSerieVues();
+        mesSeries = new PanelSerieScroll(nordOuest, mes_series);
+        
         recherche = new PanelRecherche();
         uneDeMesSerie = new UneDeMesSeries();
         profil = new Profil();

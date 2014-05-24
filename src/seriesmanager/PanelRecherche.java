@@ -25,8 +25,6 @@ public class PanelRecherche extends JPanel{
     public static final int WIDTH_SEARCH = 10;
     private JTextField recherche;
 
-    
-    
     public PanelRecherche() {
         super();
         recherche = new JTextField(WIDTH_SEARCH);
@@ -41,9 +39,5 @@ public class PanelRecherche extends JPanel{
         this.add(east,BorderLayout.EAST);
         
     }
-
-    
-    
-    
-    
+   
 }

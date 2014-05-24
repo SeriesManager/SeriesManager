@@ -8,6 +8,7 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import objets.Serie;
@@ -19,12 +20,29 @@ import objets.Serie;
 public class SerieManager {
 
     public static List<Serie> getAllSerie(){
+        return requestOnSerie("SELECT * FROM SERIE");
+    }
+    
+    public static List<Serie> getAllSerieVues(){
+        return requestOnSerie("SELECT * FROM SERIE WHERE serie_vue = 1");
+    }
+    
+    public static void setSerieVue(String nomSerie, boolean signe){
+        int vu = (signe) ? 1 : 0;
+        Connexion connexion = new Connexion("serie_database.db");
+        connexion.connect();  
+        connexion.update("UPDATE SERIE SET serie_vue="+vu+" WHERE serie_name='"+nomSerie+"'");
+        connexion.close();
+    }
+    
+    private static List<Serie> requestOnSerie(String requete){
+        
         Connexion connexion = new Connexion("serie_database.db");
         connexion.connect();
         
-        List<Serie> series = new ArrayList<Serie>();
+        List<Serie> series = new ArrayList<>();
         
-        ResultSet resultSet = connexion.query("SELECT * FROM SERIE");
+        ResultSet resultSet = connexion.query(requete);
         try {
             while (resultSet.next()) {
                 Serie s = new Serie();
@@ -44,13 +62,15 @@ public class SerieManager {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }              
         
-        // pour les test 
-        for(Serie s : series)
-            System.out.println("\n"+s+"\n");
+//        // pour les test 
+//        for(Serie s : series)
+//            System.out.println("\n"+s+"\n");
+       
         connexion.close();
         return series;
+    
     }
     
 }
