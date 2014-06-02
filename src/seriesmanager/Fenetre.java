@@ -12,8 +12,10 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.util.List;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import objets.Serie;
+import seriesmanager.Calendrier.Calendrier;
 
 /**
  * 
@@ -41,6 +43,7 @@ public class Fenetre extends JFrame{
     public JPanel mesSeries;
     public JPanel lesSeries;
     public JPanel uneDeMesSerie;
+    public JPanel calendrier;
     public JPanel profil;
     
     //Image de fond
@@ -56,13 +59,13 @@ public class Fenetre extends JFrame{
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null); //place la fenêtre au centre de l'écran
         this.setResizable(false);
-        /*
+        
         try {
-         imgFond = ImageIO.read(getClass().getResourceAsStream("img/fond.png"));
+         imgFond = ImageIO.read(getClass().getResourceAsStream("fond.png"));
          }
          catch(IOException e) { }
         
-        this.repaint();*/
+        this.repaint();
         
         principal = new JPanel();
         this.setContentPane(principal);
@@ -86,6 +89,9 @@ public class Fenetre extends JFrame{
         List<Serie> mes_series = SerieManager.getAllSerieVues();
         mesSeries = new PanelSerieScroll(nordOuest, mes_series);
         
+        //Calendrier
+        calendrier = new Calendrier();
+        
         recherche = new PanelRecherche();
         uneDeMesSerie = new UneDeMesSeries();
         profil = new Profil();
@@ -95,12 +101,13 @@ public class Fenetre extends JFrame{
         nord.add(nordOuest);
         nord.add(recherche);
         page = new JPanel();
-        page.add(accueil);
         centre = new JPanel();
         centre.setLayout(new BorderLayout());
         centre.add(nord,BorderLayout.NORTH);
-        centre.add(page,BorderLayout.CENTER);
+        centre.add(page);
+        page.setLayout(new BorderLayout());
         
+        page.add(accueil);
         // le placement des panels
         principal.add(menu, BorderLayout.WEST);
         principal.add(centre, BorderLayout.CENTER);

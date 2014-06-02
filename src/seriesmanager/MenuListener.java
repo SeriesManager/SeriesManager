@@ -94,6 +94,10 @@ class MenuListener implements MouseListener, MouseMotionListener
       else if (m.zoneCalendrier.contains(p)) {// Affiche la page calendrier
           
           System.out.println("ActionCalendrier");
+          m.f.page.removeAll();
+          m.f.page.add(m.f.calendrier);             
+          m.f.page.repaint();
+          m.f.page.revalidate();
       }
    }
 
