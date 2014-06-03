@@ -4,12 +4,18 @@
  */
 package seriesmanager;
 
+import database.SerieManager;
 import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.EmptyBorder;
+import objets.Serie;
 
 /**
  * Gestionnaire pour la souris de la fenetre du menu principal
@@ -50,6 +56,12 @@ class MenuListener implements MouseListener, MouseMotionListener
           System.out.println("ActionAccueil");
           m.f.page.removeAll();
           m.f.clearNordOuest();
+          // mise à jour si il y a eu des clics + et -
+          try {
+              m.f.accueil = new Accueil();
+          } catch (IOException ex) {
+              Logger.getLogger(MenuListener.class.getName()).log(Level.SEVERE, null, ex);
+          }
           m.f.page.add(m.f.accueil);               
           m.f.page.repaint();
           m.f.page.revalidate(); 
@@ -61,6 +73,13 @@ class MenuListener implements MouseListener, MouseMotionListener
           m.f.page.removeAll();
           m.f.nordOuest.setLayout(new BorderLayout());
           m.f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
+          // mise à jour si il y a eu des clics + et -
+          List<Serie> les_series = SerieManager.getAllSerie();
+          try {
+              m.f.lesSeries = new PanelSerieScroll(m.f.nordOuest, les_series);
+          } catch (IOException ex) {
+              Logger.getLogger(MenuListener.class.getName()).log(Level.SEVERE, null, ex);
+          }
           m.f.nordOuest.add(((PanelSerieScroll)m.f.lesSeries).getComboBoxTri(), BorderLayout.WEST);
           m.f.page.add(m.f.lesSeries);
           m.f.nordOuest.repaint(); 
@@ -75,6 +94,13 @@ class MenuListener implements MouseListener, MouseMotionListener
           m.f.page.removeAll();
           m.f.nordOuest.setLayout(new BorderLayout());
           m.f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
+          // mise à jour si il y a eu des clics + et -
+          List<Serie> mes_series = SerieManager.getAllSerieVues();
+          try {
+              m.f.mesSeries = new PanelSerieScroll(m.f.nordOuest, mes_series);
+          } catch (IOException ex) {
+              Logger.getLogger(MenuListener.class.getName()).log(Level.SEVERE, null, ex);
+          }
           m.f.nordOuest.add(((PanelSerieScroll)m.f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
           m.f.page.add(m.f.mesSeries);
           m.f.nordOuest.repaint(); 

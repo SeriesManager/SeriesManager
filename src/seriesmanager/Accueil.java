@@ -31,6 +31,7 @@ public class Accueil extends JPanel{
         gl.setVgap(30);
         this.setLayout(gl);
 
+        // MATHIEU --> à mettre à jour (paramètres en fonction de ce qui est récupéré)
         PanelVignette serieSemaine = new  PanelVignette("Série de la semaine", 1, NB_VIGNETTE_LIGNE);
         PanelVignette episodesVus = new PanelVignette("Episodes vus", 1,NB_VIGNETTE_LIGNE);
         
