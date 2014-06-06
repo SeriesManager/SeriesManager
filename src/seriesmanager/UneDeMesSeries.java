@@ -6,6 +6,7 @@ package seriesmanager;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import objets.Serie;
 
 
 /**
@@ -14,7 +15,12 @@ import javax.swing.border.EmptyBorder;
  */
 public class UneDeMesSeries extends JPanel{
     
-    public UneDeMesSeries(){
+    public UneDeMesSeries(/*il faut passer l'id série en param pour récupérrer les infos ou l'objet serie?*/){
+        
+        Serie laSerie = new Serie();
+        // List listeSaison = new ArrayList();
+        // listeSaison = laSerie.getSaisons();
+        
         
     //Deux premier panels 
     JPanel pnlBaseGauche = new JPanel();   
@@ -64,7 +70,7 @@ public class UneDeMesSeries extends JPanel{
     /**********************************************/
     
     JLabel lblTitre = new JLabel();
-    lblTitre.setText("Titre");
+    lblTitre.setText(/*laSerie.getName()*/"Titre");
     gbc2.gridx = 0;
     gbc2.gridy = 0;
     gbc2.gridheight = 1;
@@ -83,7 +89,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JLabel lblAnnee = new JLabel();
-    lblAnnee.setText("Annee");
+    lblAnnee.setText(/*laSerie.getAnnee()*/"Annee");
     gbc2.gridx = 7;
     gbc2.gridy = 1;
     gbc2.gridheight = 1;
@@ -92,7 +98,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JLabel lblRealisateur = new JLabel();
-    lblRealisateur.setText("Realisateur");
+    lblRealisateur.setText(/*laSerie.getRealisateur()*/"Realisateur");
     gbc2.gridx = 7;
     gbc2.gridy = 2;
     gbc2.gridheight = 1;
@@ -101,7 +107,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JLabel lblPays = new JLabel();
-    lblPays.setText("Pays");
+    lblPays.setText(/*laSerie.getPays()*/"Pays");
     gbc2.gridx = 7;
     gbc2.gridy = 3;
     gbc2.gridheight = 1;
@@ -110,7 +116,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JLabel lblGenre=  new JLabel();
-    lblGenre.setText("Genre");
+    lblGenre.setText(/*laSerie.getGenre()*/"Genre");
     gbc2.gridx = 7;
     gbc2.gridy = 4;
     gbc2.gridheight = 1;
@@ -119,7 +125,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JLabel lblActeur1 = new JLabel();
-    lblActeur1.setText("Acteurs");
+    lblActeur1.setText(/*laSerie.getActeurs()*/"Acteurs");
     gbc2.gridx = 7;
     gbc2.gridy = 5;
     gbc2.gridheight = 1;
@@ -146,7 +152,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JLabel lblStatut = new JLabel();
-    lblStatut.setText("Statut");
+    lblStatut.setText(/*laSerie.getStatut()*/"Statut");
     gbc2.gridx = 7;
     gbc2.gridy = 6;
     gbc2.gridheight = 1;
@@ -155,7 +161,7 @@ public class UneDeMesSeries extends JPanel{
     
     
     JTextArea txtSerie = new JTextArea();
-    txtSerie.setText("Statut");
+    txtSerie.setText(/*laSerie.getStatutBis()*/"Statut");
     gbc2.gridx = 0;
     gbc2.gridy = 9;
     gbc2.gridheight = 4;
@@ -166,6 +172,32 @@ public class UneDeMesSeries extends JPanel{
     //On attaque le panel de droite
     
     JTabbedPane jtbSaison = new JTabbedPane();
+    /*
+    
+    for(int i=0; i<listeSaison.size(); i++) {
+
+        Saison uneSaison = new Saison();
+        uneSaison = listeSaison.get(i);
+        JPanel pnlTab+i = new JPanel();
+        jtbSaison.addTab("saion"+i, pnlTab+i);
+        pnlTab+i.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH/3, SeriesManager.MAIN_PANEL_HEIGHT - 100));
+        List listeEpisodes = new ArrayList();
+        listeEpisode = unesaison.getEpisodes();
+        
+        for(int y=0; y<listeEpisode.size(); y++) {
+            
+            Episode unEpisode = new Episode();
+            unEpisode = listeEpisode.get(y);
+            JCase case+y = new JCase();
+            Jlabel label+y= new JLabel();
+            label+y.setText(unEpisode.getName());
+            pnlTab+i.add(case+y, pnlTab+i);
+            pnlTab+i.add(label+y, pnlTab+i);
+        }
+
+}
+    */
+    
     JPanel pnlTab1 = new JPanel();
     JPanel pnlTab2 = new JPanel();
     jtbSaison.addTab("saion1", pnlTab1);
