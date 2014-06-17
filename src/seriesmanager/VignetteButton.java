@@ -12,7 +12,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +20,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import objets.Serie;
 
 /**
  * Vignette avec un bouton pour ajouter/retirer une série/saison
@@ -32,13 +32,13 @@ public class VignetteButton extends Vignette {
     private String imgPath;
     private BufferedImage image;
     private JButton bouton;
-    public VignetteButton(String imagePath, String nom, boolean signe) {
-        super(imagePath, nom);
+    public VignetteButton(Serie serie, boolean signe) {
+        super(serie);
         this.signe = signe;
-        if(imagePath == null)
+        if(serie.getImg() == null)
             this.imgPath = "";
         else
-            this.imgPath = imagePath;
+            this.imgPath = serie.getImg();
         System.out.println(this.imgPath);
         try {
             image = ImageIO.read(new File(imgPath));

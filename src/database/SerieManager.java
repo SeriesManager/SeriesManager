@@ -8,7 +8,6 @@ package database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import objets.Serie;
@@ -19,6 +18,32 @@ import objets.Serie;
  */
 public class SerieManager {
 
+    /**
+     * Retourne les séries de la semaine
+     * @return Retourne une liste de série
+     * @throws SQLException 
+     */
+    public static List<Serie> getSeriesOfTheWeek() throws SQLException {
+        List<Serie> series = new ArrayList();
+        
+        Connexion conn = new Connexion("serie_database.db");
+        conn.connect();
+        
+        ResultSet rs = conn.query("SELECT idSerie, nomSerie, dateSortie, nationalite, "
+                + "vu, termine, synopsis, acteurs, realisateur "
+                + "FROM serie, saison "
+                + "WHERE serie.nomSerie = saison.nomSaison");
+        
+        while(rs.next()) {
+            
+        }
+        
+        
+        conn.close();
+        return series;
+    }
+    
+    
     public static List<Serie> getAllSerie(){
         return requestOnSerie("SELECT * FROM SERIE");
     }

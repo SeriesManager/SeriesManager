@@ -75,7 +75,7 @@ public class PanelSerieScroll extends JPanel{
             container.add(espaceW);
             boolean vu = series.get(i).isVue();
             String serieName = series.get(i).getName().length() > 15 ? series.get(i).getName().substring(0, 14)+"..." : series.get(i).getName();
-            container.add(new VignetteButton(series.get(i).getImg(), serieName, vu)); //container.add(new Vignette(i+1));
+            container.add(new VignetteButton(series.get(i), vu)); //container.add(new Vignette(i+1));
         }
        
         // ON AJOUTE NOTRE PANEL A SCROLL PANEL

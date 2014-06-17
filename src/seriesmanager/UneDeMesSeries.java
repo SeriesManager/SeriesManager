@@ -6,6 +6,7 @@ package seriesmanager;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import objets.Serie;
 
 
 /**
@@ -14,7 +15,10 @@ import javax.swing.border.EmptyBorder;
  */
 public class UneDeMesSeries extends JPanel{
     
-    public UneDeMesSeries(){
+    Serie serie;
+    
+    public UneDeMesSeries(Serie serie){
+    this.serie = serie;    
         
     //Deux premier panels 
     JPanel pnlBaseGauche = new JPanel();   

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import objets.Serie;
 
 /**
  *
@@ -23,12 +24,12 @@ public class Vignette extends JPanel implements MouseListener{
     public static final int PANEL_WIDTH = 125;
     public static final int PANEL_HEIGHT = 185;
     
-    protected String imagePath;
     protected JLabel nomSerie;
     protected JPanel south;
+    protected Serie serie;
     
-    public Vignette(String imagePath, String nom){
-        this.imagePath = imagePath;
+    public Vignette(Serie serie){
+        this.serie = serie;
         
         this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
         this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
@@ -38,7 +39,7 @@ public class Vignette extends JPanel implements MouseListener{
         south.setLayout(new BorderLayout());
         south.setOpaque(false);
         
-        nomSerie = new JLabel(nom);
+        nomSerie = new JLabel(serie.getName());
         nomSerie.setOpaque(false);
         nomSerie.setForeground(Color.white);
         nomSerie.setFont(new Font("Sans Serif", Font.BOLD, 13));
@@ -82,7 +83,7 @@ public class Vignette extends JPanel implements MouseListener{
         JPanel p = fen.getPage();
         
         p.removeAll();
-        p.add(new UneDeMesSeries());
+        p.add(new UneDeMesSeries(this.serie));
         p.revalidate();
         
     }

@@ -93,7 +93,6 @@ public class Fenetre extends JFrame{
         calendrier = new Calendrier();
         
         recherche = new PanelRecherche();
-        uneDeMesSerie = new UneDeMesSeries();
         profil = new Profil();
         
         // et l'autre panel de droite qui va accueillir le reste des pages
