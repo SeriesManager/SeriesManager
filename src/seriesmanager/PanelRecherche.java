@@ -3,27 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package seriesmanager;
 
+import database.SerieManager;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import objets.Serie;
 
 /**
  * Panel contenant le champs de recherche
+ *
  * @author Arles Mathieu
  */
+public class PanelRecherche extends JPanel implements ActionListener {
 
-
-public class PanelRecherche extends JPanel implements ActionListener{
-    
-    
     public static final int WIDTH_SEARCH = 10;
     private JTextField recherche;
     private JButton btn;
@@ -40,8 +43,7 @@ public class PanelRecherche extends JPanel implements ActionListener{
         this.setBorder(new EmptyBorder(5, 0, 0, 14));
         east.add(recherche);
         east.add(btn);
-        this.add(east,BorderLayout.EAST);
-        
+        this.add(east, BorderLayout.EAST);
 
     }
 
@@ -54,7 +56,21 @@ public class PanelRecherche extends JPanel implements ActionListener{
             tmp = recherche.getText();
             System.out.println(tmp);
         }
+        JButton jSource = (JButton)source;
+        Fenetre f = (Fenetre)jSource.getTopLevelAncestor();
+        
+        List<Serie> res = SerieManager.getSeriesByNom(tmp);
+        try {
+            f.mesSeries = new PanelSerieScroll(f.nordOuest, res);
+        } catch (IOException ex) {
+            Logger.getLogger(PanelRecherche.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        f.nordOuest.add(((PanelSerieScroll) f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
+        f.page.add(f.mesSeries);
+        f.nordOuest.repaint();
+        f.nordOuest.revalidate();
+        f.page.repaint();
+        f.page.revalidate();
     }
-   
-    
+
 }

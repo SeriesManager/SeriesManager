@@ -42,6 +42,11 @@ public class SerieManager {
         return requestOnSerie(query);
     }
     
+    public static List<Serie> getSeriesByNom(String part_name) {
+        String query = "SELECT DISTINCT * FROM serie WHERE serie_name LIKE '%"+part_name+"%'";
+        return requestOnSerie(query);
+    }
+    
     public static List<Serie> getAllSerie(){
         return requestOnSerie("SELECT * FROM SERIE");
     }
