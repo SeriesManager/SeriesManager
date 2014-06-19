@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -83,7 +86,11 @@ public class Vignette extends JPanel implements MouseListener{
         JPanel p = fen.getPage();
         
         p.removeAll();
-        p.add(new UneDeMesSeries(this.serie));
+        try {
+            p.add(new UneDeMesSeries(this.serie));
+        } catch (SQLException ex) {
+            Logger.getLogger(Vignette.class.getName()).log(Level.SEVERE, null, ex);
+        }
         p.revalidate();
         
     }

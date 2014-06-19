@@ -81,7 +81,7 @@ public class SerieManager {
                 s.setVue(resultSet.getBoolean("serie_vue"));
                 s.setCommentaire(resultSet.getString("serie_commentaire"));
                 s.setNote(resultSet.getFloat("serie_note"));
-                s.setAnnee(resultSet.getDate("serie_annee"));
+                s.setAnnee(resultSet.getInt("serie_annee"));
                 s.setImg(resultSet.getString("serie_img"));
                 series.add(s);
             }

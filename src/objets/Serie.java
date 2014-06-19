@@ -24,7 +24,7 @@ public class Serie {
     private boolean vue;
     private String commentaire;
     private float note;
-    private Date annee;
+    private int annee;
     private String img;
 
     @Override
@@ -122,11 +122,11 @@ public class Serie {
         this.note = note;
     }
 
-    public Date getAnnee() {
+    public int getAnnee() {
         return annee;
     }
 
-    public void setAnnee(Date annee) {
+    public void setAnnee(int annee) {
         this.annee = annee;
     }
 
