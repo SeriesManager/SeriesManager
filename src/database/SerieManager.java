@@ -20,29 +20,23 @@ public class SerieManager {
 
     /**
      * Retourne les séries de la semaine
-     * @return Retourne une liste de série
-     * @throws SQLException 
+     * @return Retourne une liste de série 
      */
-    public static List<Serie> getSeriesOfTheWeek() throws SQLException {
-        List<Serie> series = new ArrayList();
-        
-        Connexion conn = new Connexion("serie_database.db");
-        conn.connect();
-        
-        ResultSet rs = conn.query("SELECT idSerie, nomSerie, dateSortie, nationalite, "
-                + "vu, termine, synopsis, acteurs, realisateur "
-                + "FROM serie, saison "
-                + "WHERE serie.nomSerie = saison.nomSaison");
-        
-        while(rs.next()) {
-            
-        }
-        
-        
-        conn.close();
-        return series;
+    public static List<Serie> getSeriesOfTheWeek() {
+        String query = "SELECT DISTINCT serie.serie_id, serie_name, serie_annee, "
+                + "serie_vue, serie_statut, serie_acteurs, serie_realisateurs,serie_pays, serie_genre,"
+                + "serie_commentaire, serie_note,serie_img "
+                + "FROM serie, saison, episode "
+                + "WHERE serie.serie_id = saison.serie_id AND saison.saison_id = episode.saison_id "
+                + "AND julianday('now') - julianday(episode_date_sortie) <= 7";
+        return requestOnSerie(query);
     }
     
+    
+    public static List<Serie> getSeriesVues() {
+        String query = "SELECT DISTINCT * FROM serie WHERE serie_vue = 1";
+        return requestOnSerie(query);
+    }
     
     public static List<Serie> getAllSerie(){
         return requestOnSerie("SELECT * FROM SERIE");

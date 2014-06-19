@@ -9,15 +9,8 @@ package seriesmanager;
 import database.SerieManager;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import objets.Serie;
@@ -29,26 +22,13 @@ import objets.Serie;
 public class VignetteButton extends Vignette {
 
     private boolean signe; // true = +, false = -
-    private String imgPath;
-    private BufferedImage image;
     private JButton bouton;
+    
+    
     public VignetteButton(Serie serie, boolean signe) {
         super(serie);
         this.signe = signe;
-        if(serie.getImg() == null)
-            this.imgPath = "";
-        else
-            this.imgPath = serie.getImg();
-        System.out.println(this.imgPath);
-        try {
-            image = ImageIO.read(new File(imgPath));
-        } catch (IOException ex) {
-            try {
-                image = ImageIO.read(new File("default.png"));
-            } catch (IOException ex1) {
-                Logger.getLogger(VignetteButton.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-        }
+
         
         if(signe) 
             bouton = new JButton("-"); // true = - car on l'a deja
@@ -76,11 +56,7 @@ public class VignetteButton extends Vignette {
         super.south.add(bouton,BorderLayout.EAST);  
     }
     
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, null); 
-    }
+
     
     public boolean isSigne() {
         return signe;
