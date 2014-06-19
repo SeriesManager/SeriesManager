@@ -10,8 +10,12 @@ import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -30,33 +34,57 @@ public class Vignette extends JPanel implements MouseListener{
     protected JLabel nomSerie;
     protected JPanel south;
     protected Serie serie;
+    private BufferedImage image;
     
     public Vignette(Serie serie){
-        this.serie = serie;
-        
-        this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
-        this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
-        this.setLayout(new BorderLayout());
-        
-        south = new JPanel();
-        south.setLayout(new BorderLayout());
-        south.setOpaque(false);
-        
-        nomSerie = new JLabel(serie.getName());
-        nomSerie.setOpaque(false);
-        nomSerie.setForeground(Color.white);
-        nomSerie.setFont(new Font("Sans Serif", Font.BOLD, 13));
-        nomSerie.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        //à retirer quand on aura les images
-        //setBackground(Color.red);
-        south.add(nomSerie);
-        
-        this.add(south, BorderLayout.SOUTH);
-        
-        this.addMouseListener(this);
+        try {
+            this.serie = serie;
+            
+            if(serie == null)
+                image = ImageIO.read(new File("default.png"));
+            else
+                image = ImageIO.read(new File(serie.getImg()));
+            
+            
+            this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
+            this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
+            this.setLayout(new BorderLayout());
+            
+            south = new JPanel();
+            south.setLayout(new BorderLayout());
+            south.setOpaque(false);
+            
+            if(serie != null)
+                nomSerie = new JLabel(serie.getName());
+            else
+                nomSerie = new JLabel("Aucune série");
+                
+            nomSerie.setOpaque(false);
+            nomSerie.setForeground(Color.white);
+            nomSerie.setFont(new Font("Sans Serif", Font.BOLD, 13));
+            nomSerie.setHorizontalAlignment(SwingConstants.CENTER);
+            
+            //à retirer quand on aura les images
+            //setBackground(Color.red);
+            south.add(nomSerie);
+            
+            this.add(south, BorderLayout.SOUTH);
+            
+            if(serie != null)
+                this.addMouseListener(this);
+        } catch (IOException ex) {
+            Logger.getLogger(Vignette.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
+    
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, null); 
+    }
+    
     
 //    //POUR LES TESTS
 //   public Vignette(int numero){
