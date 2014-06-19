@@ -61,13 +61,14 @@ public class PanelRecherche extends JPanel implements ActionListener {
         f.page.removeAll();
         f.nordOuest.setLayout(new BorderLayout());
         f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
+        
         List<Serie> res = SerieManager.getSeriesByNom(tmp);
-        System.out.println(res);
         try {
             f.mesSeries = new PanelSerieScroll(f.nordOuest, res);
         } catch (IOException ex) {
             Logger.getLogger(PanelRecherche.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         f.nordOuest.add(((PanelSerieScroll) f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
         f.page.add(f.mesSeries);
         f.nordOuest.repaint();
