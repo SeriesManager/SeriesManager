@@ -56,6 +56,9 @@ public class PanelRecherche extends JPanel implements ActionListener {
             tmp = recherche.getText();
             System.out.println(tmp);
         }
+        
+        if (tmp.compareTo("") != 0)
+        {
         JButton jSource = (JButton) source;
         Fenetre f = (Fenetre) jSource.getTopLevelAncestor();
         f.page.removeAll();
@@ -75,6 +78,7 @@ public class PanelRecherche extends JPanel implements ActionListener {
         f.nordOuest.revalidate();
         f.page.repaint();
         f.page.revalidate();
+        }
     }
 
 }
