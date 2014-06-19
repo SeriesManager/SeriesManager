@@ -34,6 +34,7 @@ public class PanelRecherche extends JPanel implements ActionListener{
         recherche.setPreferredSize(new Dimension(140, 30));
         btn = new JButton("ok");
         btn.setPreferredSize(new Dimension(60, 30));
+        btn.addActionListener(this);
         JPanel east = new JPanel();
         this.setLayout(new BorderLayout());
         this.setBorder(new EmptyBorder(5, 0, 0, 14));
@@ -51,7 +52,6 @@ public class PanelRecherche extends JPanel implements ActionListener{
 
         if (source == btn) {
             tmp = recherche.getText();
-            System.out.println("clic");
             System.out.println(tmp);
         }
     }
