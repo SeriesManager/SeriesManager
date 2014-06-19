@@ -34,7 +34,11 @@ public class SerieManager {
     
     
     public static List<Serie> getSeriesVues() {
-        String query = "SELECT DISTINCT * FROM serie WHERE serie_vue = 1";
+        String query = "SELECT DISTINCT serie.serie_id, serie_name, serie_annee, "
+                + "serie_vue, serie_statut, serie_acteurs, serie_realisateurs,serie_pays, serie_genre,"
+                + "serie_commentaire, serie_note,serie_img "
+                + "FROM serie, saison, episode "
+                + "WHERE serie_vue = 1 OR episode_vue=1";
         return requestOnSerie(query);
     }
     
