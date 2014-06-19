@@ -57,99 +57,103 @@ public class UneDeMesSeries extends JPanel{
     
     /****************** AJOUTE PAR DJANGO POUR PAPI ***************/
     gbc2.fill=GridBagConstraints.BOTH;
-    gbc2.insets = new Insets(5, 30, 30, 5);
-    gbc2.ipady=gbc2.anchor=GridBagConstraints.CENTER;
-    gbc2.weightx=15;
-    gbc2.weighty=15;
+    gbc2.insets = new Insets(0, 0, 0, 0);
+    gbc2.ipady=10;
+    //gbc2.anchor=GridBagConstraints.FIRST_LINE_START;
     /**********************************************/
     
+// partie de gauche (titre, image, commentaire)
     JLabel lblTitre = new JLabel();
     lblTitre.setText(serie.getName());
-    lblTitre.setFont(new java.awt.Font("Tahoma", 0, 24));
+    lblTitre.setFont(new java.awt.Font("Tahoma", 0, 20));
     gbc2.gridx = 0;
     gbc2.gridy = 0;
     gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
+    gbc2.gridwidth = 2;
     pnlBaseGauche.add(lblTitre, gbc2);
-    
     
     JPanel pnlImg = new JPanel();
     JLabel monImage = new JLabel(new ImageIcon(serie.getImg()));
     pnlImg.add(monImage);
     gbc2.gridx = 0;
     gbc2.gridy = 1;
-    gbc2.gridheight = 8;
-    gbc2.gridwidth = 6;
+    gbc2.gridheight = 7;
+    gbc2.gridwidth = 2;
     gbc2.fill = GridBagConstraints.BOTH;
     pnlBaseGauche.add(pnlImg, gbc2);
     
-    
-    JLabel lblAnnee = new JLabel();
-    lblAnnee.setText(String.valueOf(serie.getAnnee()));
-    gbc2.gridx = 7;
-    gbc2.gridy = 1;
-    gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
-    pnlBaseGauche.add(lblAnnee, gbc2);
-    
-    
-    JLabel lblRealisateur = new JLabel();
-    lblRealisateur.setText(serie.getRealisateur());
-    gbc2.gridx = 7;
-    gbc2.gridy = 2;
-    gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
-    pnlBaseGauche.add(lblRealisateur, gbc2);
-    
-    
-    JLabel lblPays = new JLabel();
-    lblPays.setText(serie.getPays());
-    gbc2.gridx = 7;
-    gbc2.gridy = 3;
-    gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
-    pnlBaseGauche.add(lblPays, gbc2);
-    
-    
-    JLabel lblGenre=  new JLabel();
-    lblGenre.setText(serie.getGenre());
-    gbc2.gridx = 7;
-    gbc2.gridy = 4;
-    gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
-    pnlBaseGauche.add(lblGenre, gbc2);
-    
-    
-    JLabel lblActeur1 = new JLabel();
-    lblActeur1.setText(serie.getActeurs());
-    gbc2.gridx = 7;
-    gbc2.gridy = 5;
-    gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
-    pnlBaseGauche.add(lblActeur1, gbc2);
-    
-    
-    JLabel lblStatut = new JLabel();
-    lblStatut.setText(serie.getStatut());
-    gbc2.gridx = 7;
-    gbc2.gridy = 6;
-    gbc2.gridheight = 1;
-    gbc2.gridwidth = 1;
-    pnlBaseGauche.add(lblStatut, gbc2);
-    
-    
+    JPanel comm = new JPanel();
+    comm.setLayout(new BorderLayout());
     JTextArea txtSerie = new JTextArea();
+    txtSerie.setPreferredSize(new Dimension(140, 30));
     txtSerie.setText(serie.getCommentaire());
+    JButton validerCommentaire = new JButton();
+    validerCommentaire.setText("ok");
+    comm.add(txtSerie, BorderLayout.WEST);
+    comm.add(validerCommentaire, BorderLayout.EAST);
+    
     gbc2.gridx = 0;
-    gbc2.gridy = 9;
-    gbc2.gridheight = 4;
-    gbc2.gridwidth = 4;
+    gbc2.gridy = 8;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
     gbc2.fill = GridBagConstraints.BOTH;
-    pnlBaseGauche.add(txtSerie, gbc2);
+    pnlBaseGauche.add(comm, gbc2);
     
     //On attaque le panel de droite
+    gbc2.insets = new Insets(0,20,0,0); // MARGIN
+    gbc2.ipadx = 80;  // TAILLE DELA CELULE en X
+    gbc2.ipady = 16;  // TAILLE DELA CELULE en Y
+    JLabel lblAnnee = new JLabel();
+    lblAnnee.setText("<html>Année : " + String.valueOf(serie.getAnnee()) + "</html>");
+    //lblAnnee.setBorder(BorderFactory.createLineBorder(Color.black));
+    gbc2.gridx = 2;
+    gbc2.gridy = 1;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
+    pnlBaseGauche.add(lblAnnee, gbc2);
     
+    JLabel lblRealisateur = new JLabel();
+    lblRealisateur.setText("<html>Réalisateur :<br>" + serie.getRealisateur()+ "</html>");
+    gbc2.gridx = 2;
+    gbc2.gridy = 2;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
+    pnlBaseGauche.add(lblRealisateur, gbc2);
+   
+    JLabel lblPays = new JLabel();
+    lblPays.setText("<html>Pays :<br>" + serie.getPays() + "</html>");
+    gbc2.gridx = 2;
+    gbc2.gridy = 3;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
+    pnlBaseGauche.add(lblPays, gbc2);
+    
+    JLabel lblGenre=  new JLabel();
+    lblGenre.setText("<html>Genre :<br>" +serie.getGenre() + "</html>");
+    gbc2.gridx = 2;
+    gbc2.gridy = 4;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
+    pnlBaseGauche.add(lblGenre, gbc2);
+    
+    JLabel lblActeur1 = new JLabel();
+    lblActeur1.setText("<html>Acteurs :<br>" +serie.getActeurs() + "</html>");
+    gbc2.gridx = 2;
+    gbc2.gridy = 5;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
+    pnlBaseGauche.add(lblActeur1, gbc2);
+    
+    JLabel lblStatut = new JLabel();
+    lblStatut.setText("<html>Statut : " + serie.getStatut() + "</html>");
+    gbc2.gridx = 2;
+    gbc2.gridy = 6;
+    gbc2.gridheight = 1;
+    gbc2.gridwidth = 2;
+    pnlBaseGauche.add(lblStatut, gbc2);
+
     JTabbedPane jtbSaison = new JTabbedPane();
+    jtbSaison.setBorder(new EmptyBorder(0, 0, 0, 0));
     ArrayList listeSaison = new ArrayList();
     listeSaison = (ArrayList) SaisonManager.getSaisonBySerie(serie.getId());
     JPanel tabJpanel[]= new JPanel[listeSaison.size()];
