@@ -8,6 +8,8 @@ package seriesmanager;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,12 +21,12 @@ import javax.swing.border.EmptyBorder;
  */
 
 
-public class PanelRecherche extends JPanel{
+public class PanelRecherche extends JPanel implements ActionListener{
     
     
     public static final int WIDTH_SEARCH = 10;
-    public JTextField recherche;
-    public JButton btn;
+    private JTextField recherche;
+    private JButton btn;
     
     public PanelRecherche() {
         super();
@@ -39,9 +41,20 @@ public class PanelRecherche extends JPanel{
         east.add(btn);
         this.add(east,BorderLayout.EAST);
         
-        //Listener
-        PanelRechercheListener prl= new PanelRechercheListener(this);
-        
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String tmp = "";
+        Object source = e.getSource();
+
+        if (source == btn) {
+            tmp = recherche.getText();
+            System.out.println("clic");
+            System.out.println(tmp);
+        }
     }
    
+    
 }
