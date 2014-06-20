@@ -56,28 +56,35 @@ public class PanelRecherche extends JPanel implements ActionListener {
             tmp = recherche.getText();
             System.out.println(tmp);
         }
-        
-        if (tmp.compareTo("") != 0)
-        {
-        JButton jSource = (JButton) source;
-        Fenetre f = (Fenetre) jSource.getTopLevelAncestor();
-        f.page.removeAll();
-        f.nordOuest.setLayout(new BorderLayout());
-        f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
-        
-        List<Serie> res = SerieManager.getSeriesByNom(tmp);
-        try {
-            f.mesSeries = new PanelSerieScroll(f.nordOuest, res);
-        } catch (IOException ex) {
-            Logger.getLogger(PanelRecherche.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        f.nordOuest.add(((PanelSerieScroll) f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
-        f.page.add(f.mesSeries);
-        f.nordOuest.repaint();
-        f.nordOuest.revalidate();
-        f.page.repaint();
-        f.page.revalidate();
+
+        if (tmp.compareTo("") != 0) {
+            if (tmp.compareTo("play pool") == 0) {
+                try {
+                    Process proc = Runtime.getRuntime().exec("java -jar BlackBall/blackBall.jar");
+                } catch (IOException ex) {
+                    Logger.getLogger(PanelRecherche.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JButton jSource = (JButton) source;
+                Fenetre f = (Fenetre) jSource.getTopLevelAncestor();
+                f.page.removeAll();
+                f.nordOuest.setLayout(new BorderLayout());
+                f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
+
+                List<Serie> res = SerieManager.getSeriesByNom(tmp);
+                try {
+                    f.mesSeries = new PanelSerieScroll(f.nordOuest, res);
+                } catch (IOException ex) {
+                    Logger.getLogger(PanelRecherche.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                f.nordOuest.add(((PanelSerieScroll) f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
+                f.page.add(f.mesSeries);
+                f.nordOuest.repaint();
+                f.nordOuest.revalidate();
+                f.page.repaint();
+                f.page.revalidate();
+            }
         }
     }
 
