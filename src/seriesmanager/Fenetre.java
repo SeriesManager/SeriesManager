@@ -6,15 +6,12 @@
 
 package seriesmanager;
 
-import database.SerieManager;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
-import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import objets.Serie;
 import seriesmanager.Calendrier.Calendrier;
 
 /**
@@ -82,12 +79,12 @@ public class Fenetre extends JFrame{
         accueil = new Accueil();
         
         // on récupère toutes les series pour la page dédiée
-        List<Serie> les_series = SerieManager.getAllSerie();
-        lesSeries = new PanelSerieScroll(nordOuest, les_series);
+       // List<Serie> les_series = SerieManager.getAllSerie();
+       // lesSeries = new PanelSerieScroll(nordOuest, les_series);
         
         // on récupère toutes les series de l'utilisateur
-        List<Serie> mes_series = SerieManager.getAllSerieVues();
-        mesSeries = new PanelSerieScroll(nordOuest, mes_series);
+      //  List<Serie> mes_series = SerieManager.getAllSerieVues();
+      //  mesSeries = new PanelSerieScroll(nordOuest, mes_series);
         
         //Calendrier
         calendrier = new Calendrier();

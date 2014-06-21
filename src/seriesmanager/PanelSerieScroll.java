@@ -31,11 +31,12 @@ public class PanelSerieScroll extends JPanel{
     private final static int SIZE_ESPACE_H = 25;
     private final static int SIZE_ESPACE_W = 3;
     private final static int SCROLL_SPEED = 20;
+    
         
     public PanelSerieScroll(JPanel filtreBouton, List<Serie> series) throws IOException{
         this.series = series;
-                for(Serie s : series)
-            System.out.println("\n"+s+"\n");
+//                for(Serie s : series)
+ //           System.out.println("\n"+s+"\n");
         this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT - 15));
         this.setBackground(Color.green);
         this.setLayout(new BorderLayout());
@@ -44,9 +45,10 @@ public class PanelSerieScroll extends JPanel{
         
         combo = new JComboBox();
         combo.setPreferredSize(new Dimension(145, 20));
-        combo.addItem("tri par popularité");
-        combo.addItem("tri par date");
-        combo.addItem("tri par année");
+        combo.addItem(TriListener.TRI_NAME);
+        combo.addItem(TriListener.TRI_DATE);
+        combo.addItem(TriListener.TRI_POPULARITY);
+        combo.addActionListener(new TriListener());
         
         this.filtreBouton = filtreBouton;
         //this.filtreBouton.setBackground(Color.CYAN);

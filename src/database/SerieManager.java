@@ -32,7 +32,10 @@ public class SerieManager {
         return requestOnSerie(query);
     }
     
-    
+    /**
+     * Retourne les série que l'on suit ou dont on a vu un épisode
+     * @return  Retourne une liste de série
+     */
     public static List<Serie> getSeriesVues() {
         String query = "SELECT DISTINCT serie.serie_id, serie_name, serie_annee, "
                 + "serie_vue, serie_statut, serie_acteurs, serie_realisateurs,serie_pays, serie_genre,"
@@ -47,12 +50,18 @@ public class SerieManager {
         return requestOnSerie(query);
     }
     
-    public static List<Serie> getAllSerie(){
-        return requestOnSerie("SELECT * FROM SERIE");
+    public static List<Serie> getAllSerie(String order){
+        if(order != null)
+            return requestOnSerie("SELECT * FROM SERIE ORDER BY " + order);
+        else
+            return requestOnSerie("SELECT * FROM SERIE");
     }
     
-    public static List<Serie> getAllSerieVues(){
-        return requestOnSerie("SELECT * FROM SERIE WHERE serie_vue = 1");
+    public static List<Serie> getAllSerieVues(String order){
+        if(order != null)
+            return requestOnSerie("SELECT * FROM SERIE WHERE serie_vue = 1 ORDER BY " + order);
+        else
+            return requestOnSerie("SELECT * FROM SERIE WHERE serie_vue = 1");
     }
     
     public static void setSerieVue(String nomSerie, boolean signe){

@@ -74,12 +74,13 @@ class MenuListener implements MouseListener, MouseMotionListener
           m.f.nordOuest.setLayout(new BorderLayout());
           m.f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
           // mise à jour si il y a eu des clics + et -
-          List<Serie> les_series = SerieManager.getAllSerie();
+          List<Serie> les_series = SerieManager.getAllSerie(null);
           try {
               m.f.lesSeries = new PanelSerieScroll(m.f.nordOuest, les_series);
           } catch (IOException ex) {
               Logger.getLogger(MenuListener.class.getName()).log(Level.SEVERE, null, ex);
           }
+          m.f.mesSeries = null;
           m.f.nordOuest.add(((PanelSerieScroll)m.f.lesSeries).getComboBoxTri(), BorderLayout.WEST);
           m.f.page.add(m.f.lesSeries);
           m.f.nordOuest.repaint(); 
@@ -95,12 +96,13 @@ class MenuListener implements MouseListener, MouseMotionListener
           m.f.nordOuest.setLayout(new BorderLayout());
           m.f.nordOuest.setBorder(new EmptyBorder(5, 13, 0, 0));
           // mise à jour si il y a eu des clics + et -
-          List<Serie> mes_series = SerieManager.getAllSerieVues();
+          List<Serie> mes_series = SerieManager.getAllSerieVues(null);
           try {
               m.f.mesSeries = new PanelSerieScroll(m.f.nordOuest, mes_series);
           } catch (IOException ex) {
               Logger.getLogger(MenuListener.class.getName()).log(Level.SEVERE, null, ex);
           }
+          m.f.lesSeries = null;
           m.f.nordOuest.add(((PanelSerieScroll)m.f.mesSeries).getComboBoxTri(), BorderLayout.WEST);
           m.f.page.add(m.f.mesSeries);
           m.f.nordOuest.repaint(); 
@@ -121,6 +123,7 @@ class MenuListener implements MouseListener, MouseMotionListener
           
           System.out.println("ActionCalendrier");
           m.f.page.removeAll();
+          m.f.clearNordOuest();
           m.f.page.add(m.f.calendrier);             
           m.f.page.repaint();
           m.f.page.revalidate();

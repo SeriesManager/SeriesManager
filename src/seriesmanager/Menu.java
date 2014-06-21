@@ -9,12 +9,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -129,6 +126,7 @@ public class Menu extends JPanel{
     * @param g
     *       Contexte graphique.
     */
+    @Override
    public void paint(Graphics g)
    {
       /* Affiche les différentes images */
