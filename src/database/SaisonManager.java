@@ -22,11 +22,9 @@ public class SaisonManager {
     public static List<Saison> getSaisonBySerie(int sid) throws SQLException {
         List<Saison> saisons = new ArrayList<>();
         
-        Connexion conn = new Connexion("serie_database.db");
+        Connexion.createConnexion();
         
-        conn.connect();
-        
-        ResultSet res = conn.query("SELECT * FROM SAISON WHERE serie_id = " + sid);
+        ResultSet res = Connexion.query("SELECT * FROM SAISON WHERE serie_id = " + sid);
         
         while(res.next()) {
             Saison s = new Saison();
@@ -38,7 +36,8 @@ public class SaisonManager {
             
             saisons.add(s);
         }
-        conn.close();
+        res.close();
+        Connexion.close();
         
         return saisons;
     }

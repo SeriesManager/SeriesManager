@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import objets.Serie;
+import static database.Connexion.close;
+import static database.Connexion.createConnexion;
+import static database.Connexion.query;
+import static database.Connexion.update;
 
 /**
  *
@@ -66,20 +70,18 @@ public class SerieManager {
     
     public static void setSerieVue(String nomSerie, boolean signe){
         int vu = (signe) ? 1 : 0;
-        Connexion connexion = new Connexion("serie_database.db");
-        connexion.connect();  
-        connexion.update("UPDATE SERIE SET serie_vue="+vu+" WHERE serie_name='"+nomSerie+"'");
-        connexion.close();
+        createConnexion(); 
+        update("UPDATE SERIE SET serie_vue="+vu+" WHERE serie_name='"+nomSerie+"'");
+        close();
     }
     
     private static List<Serie> requestOnSerie(String requete){
         
-        Connexion connexion = new Connexion("serie_database.db");
-        connexion.connect();
+        createConnexion();
         
         List<Serie> series = new ArrayList<>();
         
-        ResultSet resultSet = connexion.query(requete);
+        ResultSet resultSet = query(requete);
         try {
             while (resultSet.next()) {
                 Serie s = new Serie();
@@ -97,6 +99,8 @@ public class SerieManager {
                 s.setImg(resultSet.getString("serie_img"));
                 series.add(s);
             }
+
+            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }              
@@ -105,7 +109,7 @@ public class SerieManager {
 //        for(Serie s : series)
 //            System.out.println("\n"+s+"\n");
        
-        connexion.close();
+        close();
         return series;
     
     }

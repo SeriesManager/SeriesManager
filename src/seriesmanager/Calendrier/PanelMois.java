@@ -170,7 +170,7 @@ public class PanelMois extends PanelDefault {
 		calendarDate.setTime(serie.getDate());
 
 		if (calendarDate.get(Calendar.DAY_OF_MONTH) == jours) {
-		    jButton.setBackground(Color.GREEN);
+		    jButton.setBackground(Color.cyan);
 		    String toolTip = constructToolTip(serie, jButton.getToolTipText());
 
 		    jButton.setToolTipText(toolTip);

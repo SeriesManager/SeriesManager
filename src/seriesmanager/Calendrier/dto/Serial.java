@@ -13,24 +13,12 @@ public class Serial {
     private String country;
     private String synopsis;
     private String imgSrc;
-    private Date date; 
-    private int numEpisode; // de même List<Serie>::numero
-    private int numSaison; // List<Serie>::saison avec en plus possibilité d'une
-	                   // table saiso
+    private Date date;  //have to adapte to the date base, should be TimeStamp !
+    private String numEpisode;  //have to adapte to the date base, should be INT !
+    private String numSaison;  //have to adapte to the date base, should be INT !
 
-    public Serial(String director, String title, String actors, String status, String country, String genre, String synopsis, String imgSrc,
-	    Date date, int nbSeries, int nbSeasons) {
-	super();
-	this.title = title;
-	this.status = status;
-	this.country = country;
-	this.synopsis = synopsis;
-	this.imgSrc = imgSrc;
-	this.date = date;
 
-    }
-
-    public Serial(String director, String title, String genre, Date date, int numEpisode, int numSaison) {
+    public Serial(String director, String title, String genre, Date date, String numEpisode, String numSaison) {
 	super();
 	this.title = title;
 	this.date = date;
@@ -38,8 +26,6 @@ public class Serial {
 	this.numSaison = numSaison;
     }
 
-    // List<Serie>
-    // List<>
     public long getId() {
 	return id;
     }
@@ -97,28 +83,30 @@ public class Serial {
 	this.date = date;
     }
 
-    public int getNumEpisode() {
+    public String getNumEpisode() {
 	return numEpisode;
     }
 
-    public void setNumEpisode(int numEpisode) {
+    public void setNumEpisode(String numEpisode) {
 	this.numEpisode = numEpisode;
     }
 
-    public int getNumSaison() {
+    public String getNumSaison() {
 	return numSaison;
     }
 
-    public void setNumSaison(int numSaison) {
+    public void setNumSaison(String numSaison) {
 	this.numSaison = numSaison;
     }
-
+    /**
+     * @brief method for html able elements, should not be used as toString : console doesn't understand HTML tags
+     * */
     public String toDisplay() {
 	StringBuilder sb = new StringBuilder();
 	sb.append("<html>");
 	sb.append("<strong>Title</strong>:").append(this.title);
 	sb.append("<br/>");
-	sb.append("<strong>Saison</strong>:").append(numSaison).append(" <strong>Serie</strong>:").append(numEpisode);
+	sb.append(numSaison).append("  ").append(numEpisode);
 	sb.append("<br/>");
 	sb.append("<hr/>");
 	sb.append("<br/>");

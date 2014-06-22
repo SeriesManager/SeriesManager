@@ -1,11 +1,10 @@
 package seriesmanager.Calendrier.service;
 
-import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
 import seriesmanager.Calendrier.dao.SerialsDao;
-import seriesmanager.Calendrier.dao.impl.SerialsDaoMock;
+import seriesmanager.Calendrier.dao.impl.SimpleSerialsDao;
 import seriesmanager.Calendrier.dto.Serial;
 
 public class CalendrierService {
@@ -13,12 +12,8 @@ public class CalendrierService {
     private SerialsDao dao;
 
     public CalendrierService() {
-	try {
-	    dao = new SerialsDaoMock();
-	} catch (ParseException e) {
-	    System.out.println("parse problems :'(");
-	    System.exit(1);// Never do this..
-	}
+	    dao = new SimpleSerialsDao();
+	
     }
 
     /**

@@ -21,13 +21,11 @@ public class EpisodeManager {
     public static List<Episode> getEpisodeBySaison(int sid) throws SQLException {
         List<Episode> episodes = new ArrayList<>();
         
-        Connexion conn = new Connexion("serie_database.db");
+       
+        Connexion.createConnexion();
         
-        conn.connect();
-        
-        ResultSet res = conn.query("SELECT * FROM EPISODE WHERE saison_id = " + sid);
-        
-        
+        ResultSet res = Connexion.query("SELECT * FROM EPISODE WHERE saison_id = " + sid);
+       
         while(res.next()) {
             Episode e = new Episode();
             
@@ -41,6 +39,8 @@ public class EpisodeManager {
            
            episodes.add(e);
         }
+        res.close();
+        Connexion.close();
         
         return episodes;
     }

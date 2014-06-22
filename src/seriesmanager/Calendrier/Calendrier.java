@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Calendrier extends JPanel {
@@ -27,7 +26,7 @@ public class Calendrier extends JPanel {
 	CalenderNavigation cn = new CalenderNavigation();
 	this.add(cn);
 	pb = PanelBuilder.getBuilder(cn, this);
-	this.add(pb.setToYearly().getForShow());
+	this.add(pb.setToMonthly().getForShow());
 
     }
     /**
