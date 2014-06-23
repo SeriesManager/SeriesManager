@@ -63,6 +63,8 @@ public class PanelYear extends PanelDefault {
 		calendarDate.setTime(serie.getDate());
 		JButton jButton = buttons.get(calendarDate.get(Calendar.MONTH));
 	    jButton.setBackground(Color.cyan);
+            jButton.setOpaque(true);
+            jButton.setBorderPainted(false);
 		String toolTip = constructToolTip(serie, jButton.getToolTipText());
 
 		jButton.setToolTipText(toolTip);

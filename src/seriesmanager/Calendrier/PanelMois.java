@@ -8,10 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
 import seriesmanager.Calendrier.Calendrier.CalenderNavigation;
 import seriesmanager.Calendrier.dto.Serial;
 
@@ -136,6 +134,8 @@ public class PanelMois extends PanelDefault {
 	for (; debut < buttons.size(); debut++) {
 	    buttons.get(debut).setText(++jours + "");
 	    buttons.get(debut).setBackground(Color.LIGHT_GRAY);
+            buttons.get(debut).setOpaque(true);
+            buttons.get(debut).setBorderPainted(false);
 	}
     }
 
@@ -170,7 +170,9 @@ public class PanelMois extends PanelDefault {
 		calendarDate.setTime(serie.getDate());
 
 		if (calendarDate.get(Calendar.DAY_OF_MONTH) == jours) {
-		    jButton.setBackground(Color.cyan);
+                    jButton.setBackground(Color.cyan);
+                    jButton.setOpaque(true);
+                    jButton.setBorderPainted(false);
 		    String toolTip = constructToolTip(serie, jButton.getToolTipText());
 
 		    jButton.setToolTipText(toolTip);
@@ -179,6 +181,7 @@ public class PanelMois extends PanelDefault {
 	    }
 	    if (isDefault) {
 		jButton.setBackground(DEFAULT_COLOR);
+
 	    }
 
 	}
@@ -200,6 +203,8 @@ public class PanelMois extends PanelDefault {
 	while (i-- > 0) {
 	    buttons.get(i).setText(jours-- + "");
 	    buttons.get(i).setBackground(Color.LIGHT_GRAY);
+                            buttons.get(i).setOpaque(true);
+                buttons.get(i).setBorderPainted(false);
 	}
 
     }

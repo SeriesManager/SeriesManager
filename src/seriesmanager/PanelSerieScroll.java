@@ -38,7 +38,7 @@ public class PanelSerieScroll extends JPanel{
 //                for(Serie s : series)
  //           System.out.println("\n"+s+"\n");
         this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT - 15));
-        this.setBackground(Color.green);
+    //    this.setBackground(Color.green);
         this.setLayout(new BorderLayout());
         
         JPanel container = new JPanel();

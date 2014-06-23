@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.EmptyBorder;
 import objets.Serie;
+import seriesmanager.Calendrier.Calendrier;
 
 /**
  * Gestionnaire pour la souris de la fenetre du menu principal

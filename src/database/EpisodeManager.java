@@ -86,7 +86,7 @@ public class EpisodeManager {
 
         Connexion.createConnexion();
 
-        //System.out.println("update" + sid + " " + pvue);
+        System.out.println("update" + sid + " " + pvue);
         Connexion.update("update episode set episode_vue=" + pvue + " where episode_id = " + sid);
         
         Connexion.close();

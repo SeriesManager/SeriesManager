@@ -206,15 +206,17 @@ public class UneDeMesSeries extends JPanel implements ActionListener {
                             public void itemStateChanged(ItemEvent e) {
 
                                 if ((e.getStateChange() == ItemEvent.SELECTED)) {
-                                    if (vue == 0) {
+                                    System.out.println("cocher");
+                                 //   if (vue == 0) {
                                         try {
                                             EpisodeManager.setEpisodeViewed(unEpisode.getId(), 1);
                                         } catch (SQLException ex) {
                                             Logger.getLogger(UneDeMesSeries.class.getName()).log(Level.SEVERE, null, ex);
                                         }
-                                    }
+                                   // }
 
                                 } else {
+                                    System.out.println("décocher");
                                     try {
                                         EpisodeManager.setEpisodeViewed(unEpisode.getId(), 0);
                                     } catch (SQLException ex) {
