@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import seriesmanager.Calendrier.Calendrier;
@@ -50,7 +51,7 @@ public class Fenetre extends JFrame{
     private static final int WINDOWS_WIDTH = 930;
     private static final int WINDOWS_HEIGHT = 530;
     
-    public Fenetre() throws IOException {
+    public Fenetre() throws IOException, SQLException {
         setTitle("Gestionnaire de séries");
         setSize(WINDOWS_WIDTH,WINDOWS_HEIGHT);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -7,6 +7,7 @@
 package seriesmanager;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 
 /**
@@ -21,7 +22,7 @@ public class SeriesManager {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         // TODO code application logic here
         JFrame f = new Fenetre();
         f.setVisible(true);

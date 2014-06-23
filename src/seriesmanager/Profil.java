@@ -4,14 +4,17 @@
  */
 package seriesmanager;
 
-import java.awt.Color;
+import database.EpisodeManager;
+import database.SerieManager;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import javax.swing.JButton;
+import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import objets.Serie;
 
 /**
  *
@@ -20,8 +23,7 @@ import javax.swing.JPanel;
 public class Profil extends JPanel{
     
    
-    public Profil(){
-        this.setBackground(Color.green);
+    public Profil() throws SQLException{
         
 		//this.setPreferredSize( new Dimension(SeriesManager.MAIN_PANEL_WIDTH, SeriesManager.MAIN_PANEL_HEIGHT));
 		/* On ajoute un gridbagLauout au this */
@@ -68,7 +70,7 @@ public class Profil extends JPanel{
 */
 
 		gc.ipady=gc.anchor=GridBagConstraints.CENTER;
-		
+	
 		/* weightx définit le nombre de cases en abscisse */
 		gc.weightx=6;
 		
@@ -94,7 +96,7 @@ public class Profil extends JPanel{
     this.add(lbl_plus_vu, gc);
     
     JLabel lbl_reponse_plus_vu = new JLabel();
-    lbl_reponse_plus_vu.setText("Game of Thrones");
+    lbl_reponse_plus_vu.setText(SerieManager.getMostViewedSerie());
     gc.gridx = 1;
     gc.gridy = 0;
     gc.gridheight = 1;
@@ -113,7 +115,10 @@ public class Profil extends JPanel{
     this.add(nbr_heure, gc);
     
     JLabel reponse_nbr_heure = new JLabel();
-    reponse_nbr_heure.setText("65 heures et 10 minutes");
+    int duree = EpisodeManager.getTotalTimeViewed();
+    int hours = duree / 60;
+    int minutes = duree % 60;
+    reponse_nbr_heure.setText(hours + " heures et " + minutes + " minutes");
     gc.gridx = 1;
     gc.gridy = 1;
     gc.gridheight = 1;
@@ -133,7 +138,8 @@ public class Profil extends JPanel{
     this.add(nbr_episode, gc);
     
     JLabel reponse_nbr_episode = new JLabel();
-    reponse_nbr_episode.setText("22 épisodes vus");
+    int nbEpisode = EpisodeManager.getAllEpisodeViewed();
+    reponse_nbr_episode.setText(nbEpisode + " épisodes vus");
     gc.gridx = 1;
     gc.gridy = 3;
     gc.gridheight = 1;
@@ -153,7 +159,9 @@ public class Profil extends JPanel{
     this.add(nbr_serie, gc);
     
     JLabel reponse_nbr_serie = new JLabel();
-    reponse_nbr_serie.setText("4 séries");
+    List<Serie> ls = SerieManager.getAllSerieVues(null);
+    int nbSerie = ls.size();
+    reponse_nbr_serie.setText(nbSerie + " séries");
     gc.gridx = 1;
     gc.gridy = 4;
     gc.gridheight = 1;

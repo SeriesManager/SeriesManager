@@ -26,9 +26,9 @@ public class TriListener implements ActionListener {
     public final static String TRI_DATE = "tri par date";
     public final static String TRI_POPULARITY = "tri par popularité";
 
-    private final static String COL_NAME = "serie_name";
-    private final static String COL_DATE = "serie_annee";
-    private final static String COL_POPULARITY = "serie_note";
+    private final static String COL_NAME = "serie_name ASC";
+    private final static String COL_DATE = "serie_annee DESC";
+    private final static String COL_POPULARITY = "serie_note DESC";
 
     @Override
     public void actionPerformed(ActionEvent e) {

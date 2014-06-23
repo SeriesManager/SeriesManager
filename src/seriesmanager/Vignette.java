@@ -26,66 +26,66 @@ import objets.Serie;
  *
  * @author Django
  */
-public class Vignette extends JPanel implements MouseListener{
-    
+public class Vignette extends JPanel implements MouseListener {
+
     public static final int PANEL_WIDTH = 125;
     public static final int PANEL_HEIGHT = 185;
-    
+
     protected JLabel nomSerie;
     protected JPanel south;
     protected Serie serie;
     private BufferedImage image;
-    
-    public Vignette(Serie serie){
+
+    public Vignette(Serie serie) {
         try {
             this.serie = serie;
-            
-            if(serie == null)
+
+            if (serie == null) {
                 image = ImageIO.read(new File("default.png"));
-            else
+            } else {
                 image = ImageIO.read(new File(serie.getImg()));
-            
-            
-            this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
+            }
+
+            this.setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
             this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
             this.setLayout(new BorderLayout());
-            
+
             south = new JPanel();
             south.setLayout(new BorderLayout());
             south.setOpaque(false);
-            
-            if(serie != null)
+
+            if (serie != null) {
                 nomSerie = new JLabel(serie.getName());
-            else
+            } else {
                 nomSerie = new JLabel("Aucune série");
-                
+            }
+
             nomSerie.setOpaque(false);
             nomSerie.setForeground(Color.white);
             nomSerie.setFont(new Font("Sans Serif", Font.BOLD, 13));
             nomSerie.setHorizontalAlignment(SwingConstants.CENTER);
-            
+
             //à retirer quand on aura les images
             //setBackground(Color.red);
             south.add(nomSerie);
-            
+
             this.add(south, BorderLayout.SOUTH);
-            
-            if(serie != null)
+
+            if (serie != null) {
                 this.addMouseListener(this);
+            }
         } catch (IOException ex) {
             Logger.getLogger(Vignette.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, 0, 0, null); 
+        g.drawImage(image, 0, 0, null);
     }
-    
-    
+
 //    //POUR LES TESTS
 //   public Vignette(int numero){
 //        this.setPreferredSize( new Dimension(PANEL_WIDTH, PANEL_HEIGHT) );
@@ -93,34 +93,34 @@ public class Vignette extends JPanel implements MouseListener{
 //        this.setBorder(new javax.swing.border.BevelBorder(BevelBorder.RAISED));
 //        this.add(new JLabel("Vignette " + numero));
 //    }
-   
-  /* à rajouter quand on aura des images
-   @Override
-   public void paintComponent(Graphics g) {
-        try {
-            Image img = ImageIO.read(new File(imagePath));
-            g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-   }
-   */
-
+    /* à rajouter quand on aura des images
+     @Override
+     public void paintComponent(Graphics g) {
+     try {
+     Image img = ImageIO.read(new File(imagePath));
+     g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+     } catch (IOException ex) {
+     ex.printStackTrace();
+     }
+     }
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
-        Vignette v =(Vignette) e.getSource();
-        Fenetre fen = (Fenetre)v.getTopLevelAncestor();
-        
+        Vignette v = (Vignette) e.getSource();
+        Fenetre fen = (Fenetre) v.getTopLevelAncestor();
+
         JPanel p = fen.getPage();
-        
+
         p.removeAll();
         try {
             p.add(new UneDeMesSeries(this.serie));
+            fen.clearNordOuest();
+
         } catch (SQLException ex) {
             Logger.getLogger(Vignette.class.getName()).log(Level.SEVERE, null, ex);
         }
         p.revalidate();
-        
+
     }
 
     @Override
